@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Bank.Models;
 
-namespace Bank.Models
+namespace Bank.Data
 {
     public partial class BankAppDataContext : IdentityDbContext<BankUser>
     {

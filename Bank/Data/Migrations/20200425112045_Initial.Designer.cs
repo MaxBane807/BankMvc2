@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Bank.Migrations
+namespace Bank.Data.Migrations
 {
     [DbContext(typeof(BankAppDataContext))]
-    [Migration("20200425113452_RemoveTestColumn")]
-    partial class RemoveTestColumn
+    [Migration("20200425112045_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

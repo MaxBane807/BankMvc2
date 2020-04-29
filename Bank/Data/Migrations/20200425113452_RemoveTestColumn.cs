@@ -1,22 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bank.Migrations
+namespace Bank.Data.Migrations
 {
-    public partial class FirstTest : Migration
+    public partial class RemoveTestColumn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<string>(
-                name: "TestColumn",
-                table: "Customers",
-                nullable: true);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
                 name: "TestColumn",
                 table: "Customers");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<string>(
+                name: "TestColumn",
+                table: "Customers",
+                type: "nvarchar(max)",
+                nullable: true);
         }
     }
 }
