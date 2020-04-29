@@ -28,7 +28,7 @@ namespace Bank
              services.AddControllersWithViews();
              services.AddDbContext<BankAppDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<BankUser, IdentityRole>()
+            services.AddIdentity<BankUser, IdentityRole>(options => options.User.RequireUniqueEmail = true)
                .AddEntityFrameworkStores<BankAppDataContext>()
                .AddDefaultTokenProviders();
         }
