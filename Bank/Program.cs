@@ -25,6 +25,7 @@ namespace Bank
                 try
                 {
                     var context = services.GetRequiredService<BankAppDataContext>();
+                    //Kör migrationbuilder! Delete all users
                     context.Database.Migrate();
                 }
                 catch (Exception ex)
