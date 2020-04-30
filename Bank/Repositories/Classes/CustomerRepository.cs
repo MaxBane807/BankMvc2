@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bank.Models;
 
 namespace Bank.Repositories.Classes
 {
@@ -20,6 +21,19 @@ namespace Bank.Repositories.Classes
         {
             int nr = _context.Customers.Count();
             return nr;
+        }
+
+        public Customers searchCustomerByID(int id)
+        {
+            var result = _context.Customers.Find(id);
+            return result;
+        }
+        public decimal getTotalAmountByID(int id)
+        {
+            var result = _context.Customers.FirstOrDefault(x => x.CustomerId == id)
+                .Dispositions.Sum(y => y.Account.Balance);
+
+            return result;
         }
     }
 }

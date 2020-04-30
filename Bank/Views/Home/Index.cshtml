@@ -9,3 +9,11 @@
 <h1>Antal kunder: @Model.nrOfCustomers</h1>
 <h1>Antal konton: @Model.nrOfAccounts</h1>
 <h1>Totala summan av alla konton: @Model.sumOfAllAccounts kr</h1>
+
+<form asp-controller="Home" asp-action="Index" method="post">
+    <label asp-for="customerID">Ange kundnummer</label>
+    <input type="text" asp-for="customerID" />
+
+    <button type="submit">Visa</button>
+</form>
+

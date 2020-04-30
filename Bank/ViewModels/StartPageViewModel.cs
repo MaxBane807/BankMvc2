@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bank.ViewModels
 {
@@ -12,5 +13,7 @@ namespace Bank.ViewModels
         public int nrOfAccounts { get; set; }
 
         public decimal sumOfAllAccounts { get; set; }
+       
+        public int customerID { get; set; }
     }
 }

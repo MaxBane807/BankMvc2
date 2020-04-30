@@ -1,0 +1,21 @@
+﻿@model Bank.ViewModels.CustomerOverviewViewModel
+
+@{
+    ViewData["Title"] = "viewCustomer";
+}
+
+<h1>@Model.Givenname @Model.Surname</h1>
+
+
+<h1>Kön: @Model.Gender</h1>
+<h1>Födelsedag: @Model.Birthday</h1>
+
+<h1>@Model.Streetaddress @Model.City @Model.Country</h1>
+<h1>Landskod: @Model.CountryCode</h1>
+<h1>NationalID: @Model.NationalId</h1>
+
+<h1>Email: @Model.Emailaddress</h1>
+<h1>Telefon: @Model.Telephonenumber</h1>
+<h1>Telefonlandskod: @Model.Telephonecountrycode</h1>
+<h1>Zipkod: @Model.Zipcode</h1>
+
