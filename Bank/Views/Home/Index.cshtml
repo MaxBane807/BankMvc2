@@ -1,5 +1,11 @@
-﻿@{
+﻿@model Bank.ViewModels.StartPageViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
     <h1 class="mt-4">Dashboard</h1>
+
+<h1>Antal kunder: @Model.nrOfCustomers</h1>
+<h1>Antal konton: @Model.nrOfAccounts</h1>
+<h1>Totala summan av alla konton: @Model.sumOfAllAccounts kr</h1>

@@ -10,6 +10,8 @@ using Microsoft.Extensions.Hosting;
 using Bank.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Bank.Repositories.Interfaces;
+using Bank.Repositories.Classes;
 
 namespace Bank
 {
@@ -28,9 +30,11 @@ namespace Bank
              services.AddControllersWithViews();
              services.AddDbContext<BankAppDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<BankUser, IdentityRole>(options => options.User.RequireUniqueEmail = true)
+             services.AddIdentity<BankUser, IdentityRole>(options => options.User.RequireUniqueEmail = true)
                .AddEntityFrameworkStores<BankAppDataContext>()
                .AddDefaultTokenProviders();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IAccountRepository, AccountRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
