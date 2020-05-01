@@ -19,3 +19,9 @@
 <h1>Telefonlandskod: @Model.Telephonecountrycode</h1>
 <h1>Zipkod: @Model.Zipcode</h1>
 
+<h1>Totalt saldo: @Model.TotalAmount kr</h1>
+
+@foreach (var accountnr in Model.Accounts)
+{
+    <h1>Konto nr:@accountnr</h1>
+}

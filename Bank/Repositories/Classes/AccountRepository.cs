@@ -1,5 +1,6 @@
 ﻿using Bank.Data;
 using Bank.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,16 @@ namespace Bank.Repositories.Classes
         {
             decimal sum = _context.Accounts.Sum(x => x.Balance);
             return sum;
+        }
+
+        public List<int> getAccountsByID(int customerid)
+        {
+            var accountnumbers = _context.Customers
+                .Include(x => x.Dispositions)
+                .FirstOrDefault(x => x.CustomerId == customerid)
+                .Dispositions.Select(y => y.AccountId).ToList();
+
+            return accountnumbers;
         }
     }
 }

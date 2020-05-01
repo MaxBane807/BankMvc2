@@ -12,12 +12,28 @@ namespace Bank.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerRepository _customerRepository;
-        
-        public CustomerController(ICustomerRepository customerRepo)
+        private readonly IAccountRepository _accountRepository;
+        public CustomerController(ICustomerRepository customerRepo, IAccountRepository accountRepo)
         {
             _customerRepository = customerRepo;
+            _accountRepository = accountRepo;
         }
         
+        
+        public IActionResult searchCustomer(int id)
+        {
+            var result = _customerRepository.searchCustomerByID(id);
+
+            if (result != null)
+            {
+                return RedirectToAction("viewCustomer", "Customer", result);
+            }
+            else
+            {
+                return View("CustomerNotFound");
+            }
+        }
+
         public IActionResult viewCustomer(Customers customer)
         {
             var viewmodel = new CustomerOverviewViewModel()
@@ -38,7 +54,7 @@ namespace Bank.Controllers
             };
 
             viewmodel.TotalAmount = _customerRepository.getTotalAmountByID(customer.CustomerId);
-            
+            viewmodel.Accounts = _accountRepository.getAccountsByID(customer.CustomerId);
             
             return View(viewmodel);
         }

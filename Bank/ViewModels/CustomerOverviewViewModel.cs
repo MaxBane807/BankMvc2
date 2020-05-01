@@ -43,5 +43,7 @@ namespace Bank.ViewModels
         public string Emailaddress { get; set; }
 
         public decimal TotalAmount { get; set; }
+
+        public List<int> Accounts { get; set; }
     }
 }

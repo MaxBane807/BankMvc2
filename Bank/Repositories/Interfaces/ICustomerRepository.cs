@@ -14,5 +14,6 @@ namespace Bank.Repositories.Interfaces
         Customers searchCustomerByID(int id);
 
         decimal getTotalAmountByID(int id);
+
     }
 }

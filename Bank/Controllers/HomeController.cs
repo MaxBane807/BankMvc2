@@ -36,23 +36,7 @@ namespace Bank.Controllers
 
             return View(viewModel);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Index(StartPageViewModel viewmodel)
-        {
-            var result = _customerRepository.searchCustomerByID(viewmodel.customerID);
-
-            if (result != null)
-            {
-                return RedirectToAction("viewCustomer", "Customer", result);
-            }
-            else
-            {
-                ModelState.AddModelError("customerID", "Kunden fanns inte");
-                return View(viewmodel);
-            }
-        }
+     
 
         public IActionResult Privacy()
         {
