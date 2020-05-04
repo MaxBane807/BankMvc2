@@ -20,9 +20,9 @@ namespace Bank.Controllers
         }
         
         
-        public IActionResult searchCustomer(int id)
+        public IActionResult searchCustomer(string id)
         {
-            var result = _customerRepository.searchCustomerByID(id);
+            var result = _customerRepository.searchCustomerByID(Int32.Parse(id));
 
             if (result != null)
             {

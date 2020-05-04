@@ -1,3 +1,10 @@
-﻿$("#search").on("click", function (e) {
-    window.location.href = 'Customer/searchCustomer/' + $("#searchvalue").val();
+﻿
+$(document).ready(function () {
+
+    $("#searchButton").on("click", function (e) {
+
+        $("#idSearch").trigger('submit');
+    });
+
 });
+
