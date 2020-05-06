@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Bank.Models;
 using Bank.ViewModels;
 using Bank.Repositories.Interfaces;
+using Bank.Extensions;
 
 namespace Bank.Controllers
 {
@@ -22,6 +23,11 @@ namespace Bank.Controllers
         
         public IActionResult searchCustomer(string id)
         {
+            if (!id.IsInteger())
+            {
+                return View("CustomerNotFound");
+            }
+            
             var result = _customerRepository.searchCustomerByID(Int32.Parse(id));
 
             if (result != null)
@@ -57,6 +63,26 @@ namespace Bank.Controllers
             viewmodel.Accounts = _accountRepository.getAccountsByID(customer.CustomerId);
             
             return View(viewmodel);
+        }
+
+        public IActionResult ListCustomers(string page)
+        {
+                      
+            var listCustomersViewModel = new ListCustomersViewModel();
+
+            listCustomersViewModel.PagingViewModel.CurrentPage = string.IsNullOrEmpty(page) ? 1 : Convert.ToInt32(page);
+
+            listCustomersViewModel.PagingViewModel.PageSize = 50;
+
+            listCustomersViewModel.Customers = _customerRepository.getListedCustomers(
+                listCustomersViewModel.PagingViewModel.PageSize,
+                listCustomersViewModel.PagingViewModel.CurrentPage
+                ).ToList();    
+
+            var pageCount = (double)_customerRepository.getNumberOfCustomers() / listCustomersViewModel.PagingViewModel.PageSize;
+            listCustomersViewModel.PagingViewModel.MaxPages = (int)Math.Ceiling(pageCount);
+
+            return View(listCustomersViewModel);
         }
     }
 }

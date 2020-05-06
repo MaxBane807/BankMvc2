@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Bank.Models;
+using Bank.ViewModels;
 
 namespace Bank.Repositories.Interfaces
 {
@@ -15,5 +16,6 @@ namespace Bank.Repositories.Interfaces
 
         decimal getTotalAmountByID(int id);
 
+        IQueryable<ListCustomersViewModel.CustomerViewModel>getListedCustomers(int pagesize, int currentPage);
     }
 }

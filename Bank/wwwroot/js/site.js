@@ -6,5 +6,6 @@ $(document).ready(function () {
         $("#idSearch").trigger('submit');
     });
 
+   
 });
 

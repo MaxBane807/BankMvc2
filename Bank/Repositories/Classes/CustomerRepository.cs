@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bank.Models;
 using Microsoft.EntityFrameworkCore;
+using Bank.ViewModels;
 
 namespace Bank.Repositories.Classes
 {
@@ -37,6 +38,22 @@ namespace Bank.Repositories.Classes
                 .Dispositions.Sum(y => y.Account.Balance);
 
             return result;
+        }
+        public IQueryable<ListCustomersViewModel.CustomerViewModel> getListedCustomers(int pagesize, int currentPage)
+        {
+            var customers = _context.Customers.Select(x => new ListCustomersViewModel.CustomerViewModel
+            {
+                CustomerId = x.CustomerId,
+                NationalId = x.NationalId,
+                Givenname = x.Givenname,
+                Surname = x.Surname,
+                Streetaddress = x.Streetaddress,
+                City = x.City
+            });
+
+
+            customers = customers.Skip((currentPage - 1) * pagesize).Take(pagesize);
+            return customers;
         }
     }
 }
