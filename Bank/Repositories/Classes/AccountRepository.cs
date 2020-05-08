@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Bank.Models;
 
 namespace Bank.Repositories.Classes
 {
@@ -29,7 +30,7 @@ namespace Bank.Repositories.Classes
             return sum;
         }
 
-        public List<int> getAccountsByID(int customerid)
+        public List<int> getAccountsByCustomerID(int customerid)
         {
             var accountnumbers = _context.Customers
                 .Include(x => x.Dispositions)
@@ -37,6 +38,12 @@ namespace Bank.Repositories.Classes
                 .Dispositions.Select(y => y.AccountId).ToList();
 
             return accountnumbers;
+        }
+        
+        public Accounts getAccountByID(int accountid)
+        {
+            return _context.Accounts.Include(y => y.Transactions).
+                FirstOrDefault(x => x.AccountId == accountid);
         }
     }
 }

@@ -7,21 +7,33 @@
 <h1>@Model.Givenname @Model.Surname</h1>
 
 
-<h1>Kön: @Model.Gender</h1>
-<h1>Födelsedag: @Model.Birthday</h1>
+<h1>Gender: @Model.Gender</h1>
+<h1>Day of Birth: @Model.Birthday</h1>
 
 <h1>@Model.Streetaddress @Model.City @Model.Country</h1>
-<h1>Landskod: @Model.CountryCode</h1>
-<h1>NationalID: @Model.NationalId</h1>
+<h1>Country code: @Model.CountryCode</h1>
+<h1>National ID: @Model.NationalId</h1>
 
 <h1>Email: @Model.Emailaddress</h1>
-<h1>Telefon: @Model.Telephonenumber</h1>
-<h1>Telefonlandskod: @Model.Telephonecountrycode</h1>
-<h1>Zipkod: @Model.Zipcode</h1>
+<h1>Phone number: @Model.Telephonenumber</h1>
+<h1>Telephone country code: @Model.Telephonecountrycode</h1>
+<h1>Zipcode: @Model.Zipcode</h1>
 
-<h1>Totalt saldo: @Model.TotalAmount kr</h1>
+<h1>Total balance: @Model.TotalAmount kr</h1>
+<table class="table">
+       
+    <tbody>
+        @foreach (var accountnr in Model.Accounts)
+        {
 
-@foreach (var accountnr in Model.Accounts)
-{
-    <h1>Konto nr:@accountnr</h1>
-}
+            <tr>
+                <th scope="row">Account Nr: @accountnr</th>
+                <td><a asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
+                <td><a asp-controller="Transaction">Insert</a></td>
+                <td><a>Withdraw</a></td>
+                <td><a>Transfer</a></td>          
+            </tr>
+
+        }
+    </tbody>
+</table>

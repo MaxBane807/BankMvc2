@@ -60,7 +60,7 @@ namespace Bank.Controllers
             };
 
             viewmodel.TotalAmount = _customerRepository.getTotalAmountByID(customer.CustomerId);
-            viewmodel.Accounts = _accountRepository.getAccountsByID(customer.CustomerId);
+            viewmodel.Accounts = _accountRepository.getAccountsByCustomerID(customer.CustomerId);
             
             return View(viewmodel);
         }

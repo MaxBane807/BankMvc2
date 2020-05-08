@@ -1,0 +1,42 @@
+﻿@model Bank.ViewModels.AccountOverviewViewModel
+
+
+@{
+    ViewData["Title"] = "ViewAccount";
+}
+
+<h1>Account @Model.AccountID</h1>
+<h3>Balance: @Model.AccountBalance</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Transaction ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Operation</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Bank</th>
+            <th scope="col">Other Account</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model.Transactions)
+        {
+        <tr>
+            <th scope="row">@transaction.TransactionId</th>
+            <td>@transaction.Date</td>
+            <td>@transaction.Type</td>
+            <td>@transaction.Operation</td>
+            <td>@transaction.Amount</td>
+            <td>@transaction.Balance</td>
+            <td>@transaction.Symbol</td>
+            <td>@transaction.Bank</td>
+            <td>@transaction.OtherAccount</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

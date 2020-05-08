@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bank.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace Bank.Repositories.Interfaces
 
         decimal getSumOfAccounts();
 
-        List<int> getAccountsByID(int customerid);
+        List<int> getAccountsByCustomerID(int customerid);
+
+        Accounts getAccountByID(int accountid);
     }
 }

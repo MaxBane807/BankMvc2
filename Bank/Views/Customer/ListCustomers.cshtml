@@ -8,11 +8,11 @@
  <table class="table">
      <thead>   
          <tr>
-            <th scope="col">Kundnummer</th>
-            <th scope="col">Personnummer</th>
-            <th scope="col">Namn</th>
+            <th scope="col">Customer ID</th>
+            <th scope="col">National ID</th>
+            <th scope="col">Name</th>
             <th scope="col">Address</th>
-            <th scope="col">Stad</th>
+            <th scope="col">City</th>
          </tr>
      </thead>
      <tbody>
@@ -24,7 +24,7 @@
                  <td>@customer.Givenname @customer.Surname</td>
                  <td>@customer.Streetaddress</td>
                  <td>@customer.City</td>
-                 <td><a asp-controller="Customer" asp-action="searchCustomer" asp-route-id="@customer.CustomerId">Välj</a></td>
+                 <td><a asp-controller="Customer" asp-action="searchCustomer" asp-route-id="@customer.CustomerId">View</a></td>
              </tr>
          }
      </tbody>
