@@ -25,20 +25,8 @@ namespace Bank.Repositories.Classes
             return nr;
         }
 
-        public Customers searchCustomerByID(int id)
-        {
-            var result = _context.Customers.Find(id);
-            return result;
-        }
-        public decimal getTotalAmountByID(int id)
-        {
-            var result = _context.Customers.Include(z => z.Dispositions)
-                .ThenInclude(l => l.Account)
-                .FirstOrDefault(x => x.CustomerId == id)
-                .Dispositions.Sum(y => y.Account.Balance);
-
-            return result;
-        }
+        
+        
         public IQueryable<ListCustomersViewModel.CustomerViewModel> getListedCustomers(int pagesize, int currentPage)
         {
             var customers = _context.Customers.Select(x => new ListCustomersViewModel.CustomerViewModel

@@ -8,29 +8,27 @@ using Microsoft.Extensions.Logging;
 using Bank.Models;
 using Bank.Repositories.Interfaces;
 using Bank.ViewModels;
+using Bank.Services.Interfaces;
 
 namespace Bank.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ICustomerRepository _customerRepository;
-        private readonly IAccountRepository _accountRepository;
+        private readonly ICustomerService _customerService;
 
         public HomeController(
             ILogger<HomeController> logger,
-            ICustomerRepository customerRepo,
-            IAccountRepository accountRepo)
+            ICustomerService customerService)
         {
             _logger = logger;
-            _customerRepository = customerRepo;
-            _accountRepository = accountRepo;
+            _customerService = customerService;
         }
 
         public IActionResult Index()
         {
             var viewModel = new StartPageViewModel();
-            viewModel.nrOfCustomers = _customerRepository.getNumberOfCustomers();
+            viewModel.nrOfCustomers = _customerService.getNumberOfCustomers();
             viewModel.nrOfAccounts = _accountRepository.getNrOfAccounts();
             viewModel.sumOfAllAccounts = _accountRepository.getSumOfAccounts();
 

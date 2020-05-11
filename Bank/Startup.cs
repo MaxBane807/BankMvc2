@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Bank.Repositories.Interfaces;
 using Bank.Repositories.Classes;
+using Bank.Services.Interfaces;
+using Bank.Services.Classes;
 
 namespace Bank
 {
@@ -35,6 +37,11 @@ namespace Bank
                .AddDefaultTokenProviders();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
+
+            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ITransactionService, TransactionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

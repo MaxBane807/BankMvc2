@@ -27,8 +27,4 @@
     <None Include="wwwroot\assets\demo\datatables-demo.js" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ValidationAttributes\" />
-  </ItemGroup>
-
 </Project>

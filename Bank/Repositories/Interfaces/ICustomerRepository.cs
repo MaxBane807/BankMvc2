@@ -12,9 +12,9 @@ namespace Bank.Repositories.Interfaces
     {
         int getNumberOfCustomers();
 
-        Customers searchCustomerByID(int id);
+       
 
-        decimal getTotalAmountByID(int id);
+        IQueryable<> getTotalAmountByID(int id);
 
         IQueryable<ListCustomersViewModel.CustomerViewModel>getListedCustomers(int pagesize, int currentPage);
     }

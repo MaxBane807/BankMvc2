@@ -1,0 +1,38 @@
+﻿@model Bank.ViewModels.InsertViewModel
+
+@{
+    ViewData["Title"] = "Insert";
+}
+
+
+
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Insert</h3></div>
+                                <div class="card-body">
+                                    <form asp-controller="Transaction" asp-action="Insert" method="post">
+                                        <div class="form-group"><label class="small mb-1" asp-for="Amount">Amount</label><input class="form-control py-4" asp-for="Amount" type="number" placeholder="Enter amount" /></div>
+                                        <div class="form-group"><label class="small mb-1" asp-for="Operation">Operation</label><input class="form-control py-4" asp-for="Operation" type="text" placeholder="Enter operation" /></div>
+                                        <div class="form-group"><label class="small mb-1" asp-for="Symbol">Symbol</label><input class="form-control py-4" asp-for="Symbol" type="text" placeholder="Enter symbol" /></div>
+                                        <div class="form-group"><label class="small mb-1" asp-for="Bank">From bank</label><input class="form-control py-4" asp-for="Bank" type="text" placeholder="Enter concerned bank" /></div>
+                                        <div class="form-group"><label class="small mb-1" asp-for="Account">From account</label><input class="form-control py-4" asp-for="Account" type="text" placeholder="Enter concerned account"/></div> 
+                                        <input type="hidden" asp-for="AccountID" value="@Model.AccountID"/>
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><input class="btn btn-primary" type="submit" value="Insert"/></div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+</body>

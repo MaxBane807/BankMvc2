@@ -12,7 +12,7 @@ namespace Bank.Repositories.Interfaces
 
         decimal getSumOfAccounts();
 
-        List<int> getAccountsByCustomerID(int customerid);
+        
 
         Accounts getAccountByID(int accountid);
     }

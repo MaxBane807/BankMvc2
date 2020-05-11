@@ -42,8 +42,7 @@ namespace Bank.Repositories.Classes
         
         public Accounts getAccountByID(int accountid)
         {
-            return _context.Accounts.Include(y => y.Transactions).
-                FirstOrDefault(x => x.AccountId == accountid);
+            _context.Accounts.FirstOrDefault(x => x.AccountId == accountid);
         }
     }
 }

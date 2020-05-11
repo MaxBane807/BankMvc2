@@ -7,62 +7,54 @@ using Bank.Models;
 using Bank.ViewModels;
 using Bank.Repositories.Interfaces;
 using Bank.Extensions;
+using Bank.Services.Interfaces;
+using Bank.Services.Classes;
 
 namespace Bank.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly ICustomerRepository _customerRepository;
-        private readonly IAccountRepository _accountRepository;
-        public CustomerController(ICustomerRepository customerRepo, IAccountRepository accountRepo)
-        {
-            _customerRepository = customerRepo;
-            _accountRepository = accountRepo;
-        }
+        private readonly ICustomerService _customerService;
+        private readonly IAccountService _accountService;
         
-        
-        public IActionResult searchCustomer(string id)
+        public CustomerController(ICustomerService customerService, IAccountService accountService)
         {
-            if (!id.IsInteger())
-            {
-                return View("CustomerNotFound");
-            }
-            
-            var result = _customerRepository.searchCustomerByID(Int32.Parse(id));
+            _customerService = customerService;
+            _accountService = accountService;
+        }            
 
-            if (result != null)
+        public IActionResult viewCustomer(string customerID)
+        {
+            var customer = _customerService.getCustomerByID(customerID);
+
+            if (customer != null)
             {
-                return RedirectToAction("viewCustomer", "Customer", result);
+                var viewmodel = new CustomerOverviewViewModel()
+                {
+                    Birthday = customer.Birthday,
+                    City = customer.City,
+                    Country = customer.Country,
+                    CountryCode = customer.CountryCode,
+                    Emailaddress = customer.Emailaddress,
+                    Gender = customer.Gender,
+                    Givenname = customer.Givenname,
+                    NationalId = customer.NationalId,
+                    Streetaddress = customer.Streetaddress,
+                    Surname = customer.Surname,
+                    Telephonecountrycode = customer.Telephonecountrycode,
+                    Telephonenumber = customer.Telephonenumber,
+                    Zipcode = customer.Zipcode
+                };
+
+                viewmodel.TotalAmount = _customerService.getTotalAmountByID(customer.CustomerId);
+                viewmodel.Accounts = _accountService.getAccountsByCustomerID(customer.CustomerId);
+
+                return View(viewmodel);
             }
             else
             {
                 return View("CustomerNotFound");
             }
-        }
-
-        public IActionResult viewCustomer(Customers customer)
-        {
-            var viewmodel = new CustomerOverviewViewModel()
-            {
-                Birthday = customer.Birthday,
-                City = customer.City,
-                Country = customer.Country,
-                CountryCode = customer.CountryCode,
-                Emailaddress = customer.Emailaddress,
-                Gender = customer.Gender,
-                Givenname = customer.Givenname,
-                NationalId = customer.NationalId,
-                Streetaddress = customer.Streetaddress,
-                Surname = customer.Surname,
-                Telephonecountrycode = customer.Telephonecountrycode,
-                Telephonenumber = customer.Telephonenumber,
-                Zipcode = customer.Zipcode
-            };
-
-            viewmodel.TotalAmount = _customerRepository.getTotalAmountByID(customer.CustomerId);
-            viewmodel.Accounts = _accountRepository.getAccountsByCustomerID(customer.CustomerId);
-            
-            return View(viewmodel);
         }
 
         public IActionResult ListCustomers(string page)
@@ -74,12 +66,20 @@ namespace Bank.Controllers
 
             listCustomersViewModel.PagingViewModel.PageSize = 50;
 
-            listCustomersViewModel.Customers = _customerRepository.getListedCustomers(
+            listCustomersViewModel.Customers = _customerService.getListedCustomers(
                 listCustomersViewModel.PagingViewModel.PageSize,
                 listCustomersViewModel.PagingViewModel.CurrentPage
-                ).ToList();    
+                ).Select(x => new ListCustomersViewModel.CustomerViewModel
+                {
+                    CustomerId = x.CustomerId,
+                    City = x.City,
+                    Givenname = x.Givenname,
+                    NationalId = x.NationalId,
+                    Streetaddress = x.Streetaddress,
+                    Surname = x.Surname
+                }).ToList();    
 
-            var pageCount = (double)_customerRepository.getNumberOfCustomers() / listCustomersViewModel.PagingViewModel.PageSize;
+            var pageCount = (double)_customerService.getNumberOfCustomers() / listCustomersViewModel.PagingViewModel.PageSize;
             listCustomersViewModel.PagingViewModel.MaxPages = (int)Math.Ceiling(pageCount);
 
             return View(listCustomersViewModel);
