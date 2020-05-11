@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Bank.Models;
-using Bank.Repositories.Interfaces;
 using Bank.ViewModels;
 using Bank.Services.Interfaces;
 
@@ -16,21 +15,24 @@ namespace Bank.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ICustomerService _customerService;
+        private readonly IAccountService _accountService;
 
         public HomeController(
             ILogger<HomeController> logger,
-            ICustomerService customerService)
+            ICustomerService customerService,
+            IAccountService accountService)
         {
             _logger = logger;
             _customerService = customerService;
+            _accountService = accountService;
         }
 
         public IActionResult Index()
         {
             var viewModel = new StartPageViewModel();
             viewModel.nrOfCustomers = _customerService.getNumberOfCustomers();
-            viewModel.nrOfAccounts = _accountRepository.getNrOfAccounts();
-            viewModel.sumOfAllAccounts = _accountRepository.getSumOfAccounts();
+            viewModel.nrOfAccounts = _accountService.GetNrOfAccounts();
+            viewModel.sumOfAllAccounts = _accountService.GetSumOfAccounts();
 
             return View(viewModel);
         }

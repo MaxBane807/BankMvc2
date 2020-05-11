@@ -10,6 +10,9 @@ namespace Bank.Services.Interfaces
     public interface IAccountService
     {
         Accounts PrepareViewAccount(int id);
-        public List<int> getAccountsByCustomerID(int customerid);
+        List<int> getAccountsByCustomerID(int customerid);
+
+        int GetNrOfAccounts();
+        decimal GetSumOfAccounts();
     }
 }

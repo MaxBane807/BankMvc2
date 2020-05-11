@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Bank.Models;
 using Bank.ViewModels;
-using Bank.Repositories.Interfaces;
 using Bank.Extensions;
 using Bank.Services.Interfaces;
 using Bank.Services.Classes;

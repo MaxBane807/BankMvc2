@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Bank.Repositories.Interfaces;
 using Bank.Services.Interfaces;
 using Bank.ViewModels;
 using Microsoft.AspNetCore.Mvc;

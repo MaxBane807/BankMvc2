@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bank.ViewModels;
-using Bank.Repositories.Classes;
-using Bank.Repositories.Interfaces;
 using System.Security.Cryptography.Xml;
 using Bank.Models;
 using Bank.Data;
@@ -31,6 +29,14 @@ namespace Bank.Services.Classes
                 .Include(x => x.Dispositions)
                 .FirstOrDefault(x => x.CustomerId == customerid)
                 .Dispositions.Select(y => y.AccountId).ToList();
+        }
+        public int GetNrOfAccounts()
+        {
+            return _context.Accounts.Count();           
+        }
+        public decimal GetSumOfAccounts()
+        {
+            return _context.Accounts.Sum(x => x.Balance);          
         }
     }
 }
