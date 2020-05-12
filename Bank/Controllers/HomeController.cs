@@ -27,6 +27,7 @@ namespace Bank.Controllers
             _accountService = accountService;
         }
 
+        [ResponseCache(Duration = 30,Location = ResponseCacheLocation.Any)]
         public IActionResult Index()
         {
             var viewModel = new StartPageViewModel();

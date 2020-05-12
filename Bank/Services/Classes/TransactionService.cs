@@ -17,7 +17,7 @@ namespace Bank.Services.Classes
         }
         public IEnumerable<Transactions> GetandOrderTransactionsByAccountID(int id, int nrToGet)
         {
-            return _context.Transactions.Where(x => x.TransactionId == id).OrderByDescending(x => x.Date).Take(nrToGet);
+            return _context.Transactions.Where(x => x.AccountId == id).OrderByDescending(x => x.Date).ThenByDescending(x => x.TransactionId).Take(nrToGet);
         }
     }
 }

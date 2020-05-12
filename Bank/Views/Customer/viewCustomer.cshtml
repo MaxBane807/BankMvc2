@@ -30,7 +30,7 @@
                 <th scope="row">Account Nr: @accountnr</th>
                 <td><a asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
                 <td><a asp-controller="Transaction" asp-action="Insert" asp-route-accountid="@accountnr">Insert</a></td>
-                <td><a>Withdraw</a></td>
+                <td><a asp-controller="Transaction" asp-action="Withdraw" asp-route-accountID="@accountnr">Withdraw</a></td>
                 <td><a>Transfer</a></td>          
             </tr>
 

@@ -20,7 +20,7 @@ namespace Bank.ViewModels
 
         [Required]      
         [NotLessThanZero]       //Clientvalidering vid tid
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
         [StringLength(50)]
         public string Symbol { get; set; }
         [StringLength(50)]

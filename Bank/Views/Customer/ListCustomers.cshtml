@@ -24,7 +24,7 @@
                  <td>@customer.Givenname @customer.Surname</td>
                  <td>@customer.Streetaddress</td>
                  <td>@customer.City</td>
-                 <td><a asp-controller="Customer" asp-action="searchCustomer" asp-route-id="@customer.CustomerId">View</a></td>
+                 <td><a asp-controller="Customer" asp-action="viewCustomer" asp-route-CustomerID="@customer.CustomerId">View</a></td>
              </tr>
          }
      </tbody>

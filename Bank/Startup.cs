@@ -38,6 +38,7 @@ namespace Bank
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<IInsertService, InsertService>();
+            services.AddTransient<IWithdrawService, WithdrawService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
