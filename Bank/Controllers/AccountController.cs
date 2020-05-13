@@ -44,5 +44,18 @@ namespace Bank.Controllers
 
             return View(viewmodel);
         }
+
+
+        //Fundera på att göra om till custom-attribute
+        [AcceptVerbs("GET", "POST")]
+        public IActionResult VerifyNotSameAccountNr(string Account, int AccountID)
+        {
+            if (Account == AccountID.ToString())
+            {
+                return Json($"You can't transfer to the same account");
+            }
+
+            return Json(true);
+        }
     }
 }

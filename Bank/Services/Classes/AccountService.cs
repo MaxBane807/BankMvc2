@@ -38,5 +38,13 @@ namespace Bank.Services.Classes
         {
             return _context.Accounts.Sum(x => x.Balance);          
         }
+        public decimal GetAccountBalanceByID(int id)
+        {
+            return _context.Accounts.FirstOrDefault(x => x.AccountId == id).Balance;
+        }
+        public bool CheckIfAccountExists(int id)
+        {
+            return _context.Accounts.Any(x => x.AccountId == id);
+        }
     }
 }

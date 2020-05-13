@@ -14,5 +14,9 @@ namespace Bank.Services.Interfaces
 
         int GetNrOfAccounts();
         decimal GetSumOfAccounts();
+
+        decimal GetAccountBalanceByID(int id);
+
+        bool CheckIfAccountExists(int id);
     }
 }

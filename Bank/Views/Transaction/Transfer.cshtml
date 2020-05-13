@@ -1,0 +1,52 @@
+﻿@model Bank.ViewModels.TransferViewModel
+
+
+@{
+    ViewData["Title"] = "Transfer";
+}
+
+
+
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Transfer</h3></div>
+                                <div class="card-body">
+                                    <form asp-controller="Transaction" asp-action="Transfer" method="post">
+                                        <div class="form-group"><label class="small mb-1" asp-for="Amount">Amount</label><input class="form-control py-4" asp-for="Amount" type="number" placeholder="Enter amount" /> <span asp-validation-for="Amount"></span></div>
+                                        <div class="form-check form-check-inline">
+                                            <input id="credittrue" class="form-check-input" type="radio" asp-for="Credit" value="true">
+                                            <label for="credittrue" class="form-check-label">Credit</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input id="creditfalse" class="form-check-input" type="radio" asp-for="Credit" value="false">
+                                            <label for="creditfalse" class="form-check-label">Debit</label>
+                                        </div>
+                                        <span asp-validation-for="Credit"></span>
+                                        <div class="form-group"><label class="small mb-1" asp-for="Operation">Operation</label><input class="form-control py-4" asp-for="Operation" type="text" placeholder="Enter operation" /><span asp-validation-for="Operation"></span></div>
+                                        <div class="form-group"><label class="small mb-1" asp-for="Symbol">Symbol</label><input class="form-control py-4" asp-for="Symbol" type="text" placeholder="Enter symbol" /><span asp-validation-for="Symbol"></span></div>
+                                        <div class="form-group"><label class="small mb-1" asp-for="Account">Other account</label><input class="form-control py-4" asp-for="Account" type="text" placeholder="Enter concerned account" /> <span asp-validation-for="Account"></span></div>
+                                        <input type="hidden" asp-for="AccountID" value="@Model.AccountID" />
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><input class="btn btn-primary" type="submit" value="Transfer" /></div>
+                                        <div asp-validation-summary="ModelOnly"></div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
