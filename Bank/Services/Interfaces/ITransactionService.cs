@@ -9,6 +9,8 @@ namespace Bank.Services.Interfaces
     
     public interface ITransactionService
     {
-        IEnumerable<Transactions> GetandOrderTransactionsByAccountID(int id,int nrToGet);
+        IEnumerable<Transactions> GetandOrderTransactionsByAccountID(int id,int nrToGet, int nrToSkip);
+
+        int CountTransactionsByAccountID(int accountID);
     }
 }

@@ -28,8 +28,8 @@ namespace Bank.Controllers
             };
 
             viewmodel.Transactions = _transactionService
-                .GetandOrderTransactionsByAccountID(id, 20)
-                .Select(x => new AccountOverviewViewModel.TransactionViewModel
+                .GetandOrderTransactionsByAccountID(id, 20,0)
+                .Select(x => new TransactionViewModel
                 {
                     TransactionId = x.TransactionId,
                     Amount = x.Amount,
@@ -45,6 +45,41 @@ namespace Bank.Controllers
             return View(viewmodel);
         }
 
+        [AcceptVerbs("GET")]
+        public IActionResult LoadTwentyMoreTransactions(int accountid, int nrToSkip)
+        {
+            var viewmodel = new LoadTwentyViewModel();
+
+            var totalcount = _transactionService.CountTransactionsByAccountID(accountid);
+
+            if ((nrToSkip + 1) * 20 >= totalcount)
+            {
+                viewmodel.AnyMore = false;
+            }
+            else
+            {
+                viewmodel.AnyMore = true;
+            }
+
+            nrToSkip = nrToSkip * 20;           
+
+            viewmodel.Transactions = _transactionService.GetandOrderTransactionsByAccountID(accountid, 20, nrToSkip)
+                .Select(x => new TransactionViewModel
+                {
+                    TransactionId = x.TransactionId,
+                    Amount = x.Amount,
+                    Balance = x.Balance,
+                    Bank = x.Bank,
+                    Date = x.Date,
+                    Operation = x.Operation,
+                    OtherAccount = x.Account,
+                    Type = x.Type,
+                    Symbol = x.Symbol
+                }).ToList();
+
+
+            return Json(new {anyMore = viewmodel.AnyMore, transactions = viewmodel.Transactions });
+        }
 
         //Fundera på att göra om till custom-attribute
         [AcceptVerbs("GET", "POST")]

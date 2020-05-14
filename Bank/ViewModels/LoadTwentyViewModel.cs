@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 
 namespace Bank.ViewModels
 {
-    public class AccountOverviewViewModel
+    public class LoadTwentyViewModel
     {
-        public int AccountID { get; set; }
-
-        public decimal AccountBalance { get; set; }
-
         public List<TransactionViewModel> Transactions = new List<TransactionViewModel>();
         
+        public bool AnyMore { get; set; }
     }
 }
