@@ -34,13 +34,41 @@ namespace Bank.Services.Classes
                 .FirstOrDefault(x => x.CustomerId == id)
                 .Dispositions.Sum(y => y.Account.Balance);
         }
-        public IQueryable<Customers> getListedCustomers(int pagesize, int currentPage)
+        public IQueryable<Customers> getListedCustomers(int pagesize, int currentPage, string searchName, string searchCity)
         {
-            return _context.Customers.Skip((currentPage - 1) * pagesize).Take(pagesize);
+            var query = _context.Customers.AsNoTracking();
+            
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                query = query.Where(x => x.Givenname.Contains(searchName) || x.Surname.Contains(searchName));
+            };
+
+            if (!string.IsNullOrEmpty(searchCity))
+            {
+                query = query.Where(x => x.City.Contains(searchCity));
+            };
+            
+            return query.Skip((currentPage - 1) * pagesize).Take(pagesize);
         }
         public int getNumberOfCustomers()
         {
             return _context.Customers.Count();
+        }
+        public int getNumberOfCustomersBySearch(string searchName,string searchCity)
+        {
+            var query = _context.Customers.AsNoTracking();
+
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                query = query.Where(x => x.Givenname.Contains(searchName) || x.Surname.Contains(searchName));
+            };
+
+            if (!string.IsNullOrEmpty(searchCity))
+            {
+                query = query.Where(x => x.City.Contains(searchCity));
+            };
+
+            return query.Count();
         }
     }
 }

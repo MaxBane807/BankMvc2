@@ -56,7 +56,7 @@ namespace Bank.Controllers
             }
         }
 
-        public IActionResult ListCustomers(string page)
+        public IActionResult ListCustomers(string page,string searchName, string searchCity)
         {
                       
             var listCustomersViewModel = new ListCustomersViewModel();
@@ -67,7 +67,9 @@ namespace Bank.Controllers
 
             listCustomersViewModel.Customers = _customerService.getListedCustomers(
                 listCustomersViewModel.PagingViewModel.PageSize,
-                listCustomersViewModel.PagingViewModel.CurrentPage
+                listCustomersViewModel.PagingViewModel.CurrentPage,
+                searchName,
+                searchCity
                 ).Select(x => new ListCustomersViewModel.CustomerViewModel
                 {
                     CustomerId = x.CustomerId,
@@ -76,9 +78,9 @@ namespace Bank.Controllers
                     NationalId = x.NationalId,
                     Streetaddress = x.Streetaddress,
                     Surname = x.Surname
-                }).ToList();    
+                }).ToList();
 
-            var pageCount = (double)_customerService.getNumberOfCustomers() / listCustomersViewModel.PagingViewModel.PageSize;
+            var pageCount = (double)_customerService.getNumberOfCustomersBySearch(searchName,searchCity) / listCustomersViewModel.PagingViewModel.PageSize;
             listCustomersViewModel.PagingViewModel.MaxPages = (int)Math.Ceiling(pageCount);
 
             return View(listCustomersViewModel);

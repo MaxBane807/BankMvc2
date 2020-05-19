@@ -49,3 +49,9 @@ function fetchTwenty(accountid) {
 
 }
 
+function SearchCustomers() {
+
+    var uri = updateQueryStringParameter(window.location.href, 'searchName', $('#SearchName').val());
+    window.location.href = updateQueryStringParameter(uri, 'searchCity', $('#SearchCity').val());
+}
+
