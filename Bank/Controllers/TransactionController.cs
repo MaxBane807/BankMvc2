@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using Bank.Services.Interfaces;
-using Bank.ViewModels;
+using Bank.Web.Services.Interfaces;
+using Bank.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Bank.Controllers
+namespace Bank.Web.Controllers
 {
     public class TransactionController : Controller
     {

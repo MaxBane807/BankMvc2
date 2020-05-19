@@ -1,11 +1,7 @@
-﻿using Bank.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Bank.Models;
+﻿using System.Collections.Generic;
+using Bank.Web.Models;
 
-namespace Bank.Services.Interfaces
+namespace Bank.Web.Services.Interfaces
 {
     public interface IAccountService
     {

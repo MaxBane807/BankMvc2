@@ -1,10 +1,7 @@
-﻿using Bank.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using Bank.Web.Services.Interfaces;
 
-namespace Bank.Services.Classes
+namespace Bank.Web.Services.Classes
 {
     public class TransferService : ITransferService
     {

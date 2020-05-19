@@ -1,6 +1,4 @@
-using System;
-
-namespace Bank.Models
+namespace Bank.Web.Models
 {
     public class ErrorViewModel
     {

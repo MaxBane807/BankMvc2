@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bank.Data.Migrations
+namespace Bank.Web.Data.Migrations
 {
     public partial class RemoveTestColumn : Migration
     {

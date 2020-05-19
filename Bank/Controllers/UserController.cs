@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Bank.Data;
-using Bank.ViewModels.UserViewModels;
+﻿using System.Threading.Tasks;
+using Bank.Web.Data;
+using Bank.Web.ViewModels.UserViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bank.Controllers
+namespace Bank.Web.Controllers
 {
     public class UserController : Controller
     {

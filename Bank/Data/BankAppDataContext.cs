@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Bank.Web.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Bank.Models;
 
-namespace Bank.Data
+namespace Bank.Web.Data
 {
     public partial class BankAppDataContext : IdentityDbContext<BankUser>
     {

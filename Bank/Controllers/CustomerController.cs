@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Bank.Web.Services.Interfaces;
+using Bank.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Bank.Models;
-using Bank.ViewModels;
-using Bank.Extensions;
-using Bank.Services.Interfaces;
-using Bank.Services.Classes;
 
-namespace Bank.Controllers
+namespace Bank.Web.Controllers
 {
     public class CustomerController : Controller
     {

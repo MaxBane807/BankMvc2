@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using Bank.Web.Models;
+using Bank.Web.Services.Interfaces;
+using Bank.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Bank.Models;
-using Bank.ViewModels;
-using Bank.Services.Interfaces;
 
-namespace Bank.Controllers
+namespace Bank.Web.Controllers
 {
     public class HomeController : Controller
     {

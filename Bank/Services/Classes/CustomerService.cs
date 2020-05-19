@@ -1,14 +1,11 @@
-﻿using Bank.Services.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
-using Bank.Models;
-using Bank.Extensions;
-using Bank.Data;
+using Bank.Web.Data;
+using Bank.Web.Models;
+using Bank.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bank.Services.Classes
+namespace Bank.Web.Services.Classes
 {
     public class CustomerService : ICustomerService
     {

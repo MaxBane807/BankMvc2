@@ -1,10 +1,7 @@
-﻿using Bank.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Bank.Web.Models;
 
-namespace Bank.Services.Interfaces
+namespace Bank.Web.Services.Interfaces
 {
     
     public interface ITransactionService

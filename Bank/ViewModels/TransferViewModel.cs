@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using Bank.ValidationAttributes;
+﻿using System.ComponentModel.DataAnnotations;
+using Bank.Web.ValidationAttributes;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bank.ViewModels
+namespace Bank.Web.ViewModels
 {
     public class TransferViewModel
     {
