@@ -60,7 +60,6 @@ namespace Bank.Web.Controllers
             if (ModelState.IsValid)
             {
                 _WithdrawService.CreateWithdraw(viewmodel.AccountID, viewmodel.Operation, viewmodel.Amount, viewmodel.Symbol, viewmodel.Bank, viewmodel.Account);
-                return RedirectToAction("ViewAccount", "Account", new { id = viewmodel.AccountID });
             }
             return View(viewmodel);
         }
@@ -109,7 +108,7 @@ namespace Bank.Web.Controllers
                 decimal balanceAtOtherAccount = _AccountService.GetAccountBalanceByID(Int32.Parse(otheraccount));
                 if (amount > balanceAtOtherAccount)
                 {
-                    ModelState.AddModelError(string.Empty, "The other account dosen't contain that sum. It contains " + balanceAtOtherAccount);
+                    ModelState.AddModelError(string.Empty, "The other account don't contain that sum. It contains " + balanceAtOtherAccount);
                 }
             }
            

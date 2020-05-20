@@ -15,25 +15,43 @@ namespace Bank.Web.Services.Classes
         }
         public void CreateAnInsert(int AccountID, string operation, decimal amount, string symbol, string bank, string otherAccount)
         {
-            var affectedAccount = _context.Accounts.FirstOrDefault(x => x.AccountId == AccountID);
-            affectedAccount.Balance += amount;
-            
-            var transaction = new Transactions
+            if (CheckIfValueIsPositive(amount))
             {
-                AccountId = AccountID,
-                Operation = operation,
-                Amount = amount,
-                Symbol = symbol,
-                Bank = bank,
-                Account = otherAccount,
-                Date = DateTime.Now,
-                Type = "Credit"
-            };
+                var affectedAccount = _context.Accounts.FirstOrDefault(x => x.AccountId == AccountID);
+                affectedAccount.Balance += amount;
 
-            transaction.Balance = affectedAccount.Balance;
+                var transaction = new Transactions
+                {
+                    AccountId = AccountID,
+                    Operation = operation,
+                    Amount = amount,
+                    Symbol = symbol,
+                    Bank = bank,
+                    Account = otherAccount,
+                    Date = DateTime.Now,
+                    Type = "Credit"
+                };
 
-            _context.Transactions.Add(transaction);
-            _context.SaveChanges();
+                transaction.Balance = affectedAccount.Balance;
+
+                _context.Transactions.Add(transaction);
+                _context.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("Negative values are not allowed", nameof(amount));
+            }
+            
+        }
+
+        private bool CheckIfValueIsPositive(decimal amount)
+        {
+            if (amount <= 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

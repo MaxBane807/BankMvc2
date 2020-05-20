@@ -2,6 +2,6 @@
 {
     public interface ITransferService
     {
-        void CreateTransfer(int accountid,bool credit,string operation,decimal amount,string symbol,string otheraccount);
+        bool CreateTransfer(int accountid,bool credit,string operation,decimal amount,string symbol,string otheraccount);
     }
 }
