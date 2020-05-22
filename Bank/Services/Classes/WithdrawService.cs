@@ -23,7 +23,6 @@ namespace Bank.Web.Services.Classes
             {
                 if (AmountShouldNotBeGreaterThenExisting(AccountID, amount))
                 {
-
                     var affectedAccount = _context.Accounts.FirstOrDefault(x => x.AccountId == AccountID);
                     affectedAccount.Balance -= amount;
 
@@ -44,14 +43,17 @@ namespace Bank.Web.Services.Classes
                     _context.Transactions.Add(transaction);
                     _context.SaveChanges();
 
-
                 }
-
-                throw new ArgumentException("Withdrawal exceeds balance", nameof(amount));
+                else
+                {
+                    throw new ArgumentException("Withdrawal exceeds balance", nameof(amount));
+                }
+                
             }
-            
-            throw new ArgumentException("Value can't be negative",nameof(amount));
-            
+            else
+            {
+                throw new ArgumentException("Value can't be negative", nameof(amount));
+            }
         }
         private bool AmountShouldNotBeGreaterThenExisting(int accountID, decimal amount)
         {

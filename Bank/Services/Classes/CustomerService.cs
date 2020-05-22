@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Bank.Web.Data;
+using Bank.Web.Extensions;
 using Bank.Web.Models;
 using Bank.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Bank.Web.Extensions;
 
 namespace Bank.Web.Services.Classes
 {

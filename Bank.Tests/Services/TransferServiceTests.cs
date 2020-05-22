@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Bank.Web.Data;
-using Bank.Web.Models;
 using Bank.Web.Services.Classes;
 using Bank.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;

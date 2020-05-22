@@ -51,7 +51,7 @@ namespace Bank.Web.Data
                 BankUser user = new BankUser();               
                 user.UserName = "stefan.holmberg@systementor.se";
                 user.Email = "stefan.holmberg@systementor.se";
-
+                
                 IdentityResult result = userManager.CreateAsync(user, "Hejsan123#").Result;
 
                 if (result.Succeeded)

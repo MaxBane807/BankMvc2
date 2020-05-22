@@ -4,24 +4,64 @@
     ViewData["Title"] = "viewCustomer";
 }
 
-<h1>@Model.Givenname @Model.Surname</h1>
+<dl class="row">
+    <dt class="col">Name</dt>
+    <dd class="col">@Model.Givenname @Model.Surname</dd>
+</dl>
 
+<dl class="row">
+    <dt class="col">Gender</dt>
+    <dd class="col">@Model.Gender</dd>
+</dl>
 
-<h1>Gender: @Model.Gender</h1>
-<h1>Day of Birth: @Model.Birthday</h1>
+<dl class="row">
+    <dt class="col">Day of birth</dt>
+    <dd class="col">@Model.Birthday</dd>
+</dl>
 
-<h1>@Model.Streetaddress @Model.City @Model.Country</h1>
-<h1>Country code: @Model.CountryCode</h1>
-<h1>National ID: @Model.NationalId</h1>
+<dl class="row">
+    <dt class="col">Address</dt>
+    <dd class="col">@Model.Streetaddress @Model.City @Model.Country</dd>
+</dl>
 
-<h1>Email: @Model.Emailaddress</h1>
-<h1>Phone number: @Model.Telephonenumber</h1>
-<h1>Telephone country code: @Model.Telephonecountrycode</h1>
-<h1>Zipcode: @Model.Zipcode</h1>
+<dl class="row">
+    <dt class="col">Country code</dt>
+    <dd class="col">@Model.CountryCode</dd>
+</dl>
 
-<h1>Total balance: @Model.TotalAmount kr</h1>
+<dl class="row">
+    <dt class="col">National ID</dt>
+    <dd class="col">@Model.NationalId</dd>
+</dl>
+
+<dl class="row">
+    <dt class="col">Email</dt>
+    <dd class="col">@Model.Emailaddress</dd>
+</dl>
+
+<dl class="row">
+    <dt class="col">Phone number</dt>
+    <dd class="col">@Model.Telephonenumber</dd>
+</dl>
+
+<dl class="row">
+    <dt class="col">Telephone country code</dt>
+    <dd class="col">@Model.Telephonecountrycode</dd>
+</dl>
+
+<dl class="row">
+    <dt class="col">Zipcode</dt>
+    <dd class="col">@Model.Zipcode</dd>
+</dl>
+
+<dl class="row">
+    <dt class="col">Total balance</dt>
+    <dd class="col">@Model.TotalAmount</dd>
+</dl>
+
+<h1 class="display-4">Accounts</h1>
 <table class="table">
-       
+
     <tbody>
         @foreach (var accountnr in Model.Accounts)
         {
@@ -31,7 +71,7 @@
                 <td><a asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
                 <td><a asp-controller="Transaction" asp-action="Insert" asp-route-accountid="@accountnr">Insert</a></td>
                 <td><a asp-controller="Transaction" asp-action="Withdraw" asp-route-accountID="@accountnr">Withdraw</a></td>
-                <td><a asp-controller="Transaction" asp-action="Transfer" asp-route-accountID="@accountnr">Transfer</a></td>          
+                <td><a asp-controller="Transaction" asp-action="Transfer" asp-route-accountID="@accountnr">Transfer</a></td>
             </tr>
 
         }

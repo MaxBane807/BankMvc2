@@ -35,9 +35,14 @@ namespace Bank.Web.Controllers
                 {
                     return View("LockedOut");
                 }
+
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError(string.Empty,"Wrong username or password");
+                }
             }
             
-            return View();
+            return View(viewModel);
         }
         
         [HttpPost]
@@ -48,5 +53,9 @@ namespace Bank.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
     }
 }

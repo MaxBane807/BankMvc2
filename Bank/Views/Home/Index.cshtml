@@ -4,18 +4,20 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <h1 class="mt-4">Dashboard</h1>
 
-<h1>Antal kunder: @Model.nrOfCustomers</h1>
-<h1>Antal konton: @Model.nrOfAccounts</h1>
-<h1>Totala summan av alla konton: @Model.sumOfAllAccounts kr</h1>
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to the bank admin system!</h1>
+        <hr class="my-3"/>
+        <p class="lead">The bank in numbers:</p>
+        <p>Number of customers is now <span class="font-weight-bold">@Model.nrOfCustomers</span></p>
+        <hr class="my-3" />
+        <p>Number of accounts is now <span class="font-weight-bold">@Model.nrOfAccounts</span></p>
+        <hr class="my-3" />
+        <p>The total sum of all accounts is now <span class="font-weight-bold">@Model.sumOfAllAccounts</span></p>
+    </div>
 
-<form asp-controller="Customer" asp-action="searchCustomer" asp-route-id="@Model.customerID">
-    <label>Ange kundnummer</label>
-    <input type="text" asp-for="customerID"/>
 
-    <button type="submit">Visa</button>
-</form>
 
-<a class="btn btn-primary" asp-controller="Customer" asp-action="ListCustomers">Sök kunder</a>
+
+
 
