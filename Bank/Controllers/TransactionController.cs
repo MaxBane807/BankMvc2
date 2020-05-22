@@ -1,10 +1,12 @@
 ﻿using System;
 using Bank.Web.Services.Interfaces;
 using Bank.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bank.Web.Controllers
 {
+    [Authorize]
     public class TransactionController : Controller
     {
         private readonly ITransactionService _TransactionService;

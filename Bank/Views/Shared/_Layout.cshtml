@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>Bank Admin</title>
     <link href="~/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
@@ -31,8 +31,11 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item">Register</a>
-                    <div class="dropdown-divider"></div>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a class="dropdown-item">Register</a>
+                        <div class="dropdown-divider"></div>
+                    }
                     @if (User.Identity.IsAuthenticated)
                     {
                         <form asp-controller="User" asp-action="Logout" method="post">
@@ -80,7 +83,7 @@
                 {
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        @User.Identity.Name
+                        <span class="small">@User.Identity.Name</span>
                     </div>
                 }
             </nav>

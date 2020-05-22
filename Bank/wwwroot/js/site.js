@@ -37,7 +37,13 @@ function fetchTwenty(accountid) {
                         continue;
                     }
                     let tabledata = document.createElement("td");
-                    let text = document.createTextNode(post[x]);
+
+                    let text;
+                    if (!isNaN(Date.parse(post[x]))) {
+                        text = document.createTextNode(post[x].toString().slice(0,10));
+                    } else {
+                        text = document.createTextNode(post[x]);
+                    }
                     tabledata.appendChild(text);
                     tablerow.appendChild(tabledata);
                 }

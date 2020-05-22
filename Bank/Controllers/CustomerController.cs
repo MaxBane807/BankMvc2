@@ -2,10 +2,12 @@
 using System.Linq;
 using Bank.Web.Services.Interfaces;
 using Bank.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bank.Web.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;

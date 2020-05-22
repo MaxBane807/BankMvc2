@@ -15,13 +15,13 @@
                             <div class="card-body">
                                 <form asp-controller="User" asp-action="Login" method="post">
                                     <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" asp-for="Email" type="email" placeholder="Enter email address" /><span asp-validation-for="Email"></span></div>
-                                    <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input class="form-control py-4" id="inputPassword" asp-for="Password" type="password" placeholder="Enter password" /><span asp-validation-for="Password"></span></div>                
+                                    <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input class="form-control py-4" id="inputPassword" asp-for="Password" type="password" placeholder="Enter password" /><span asp-validation-for="Password"></span></div>
                                     <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><button class="btn btn-primary" type="submit">Login</button></div>
                                     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                                 </form>
                             </div>
                             <div class="card-footer text-center">
-                                <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                <div class="small"><a asp-controller="User" asp-action="Register">Need an account? Sign up!</a></div>
                             </div>
                         </div>
                     </div>
@@ -44,4 +44,9 @@
         </footer>
     </div>
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
 

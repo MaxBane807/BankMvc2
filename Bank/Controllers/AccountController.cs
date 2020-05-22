@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using Bank.Web.Services.Interfaces;
 using Bank.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bank.Web.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly IAccountService _accountService;
@@ -14,6 +16,7 @@ namespace Bank.Web.Controllers
             _accountService = accountService;
             _transactionService = transactionService;
         }
+        
         
         public IActionResult ViewAccount(int id)
         {                   
