@@ -1,4 +1,5 @@
 ﻿var loadcount = 1;
+var moment = require("moment");
 
 $(document).ready(function () {
 
@@ -39,7 +40,9 @@ function fetchTwenty(accountid) {
                     let tabledata = document.createElement("td");
 
                     let text;
-                    if (!isNaN(Date.parse(post[x]))) {
+                    var dateformat = "YYYY-MM-DDTHH:mm:ss";
+                    var isDate = moment(post[x], dateformat, true).isValid();
+                    if (isDate) {
                         text = document.createTextNode(post[x].toString().slice(0,10));
                     } else {
                         text = document.createTextNode(post[x]);
