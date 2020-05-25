@@ -29,6 +29,8 @@ namespace Bank.Web
              services.AddIdentity<BankUser, IdentityRole>(options => options.User.RequireUniqueEmail = true)
                .AddEntityFrameworkStores<BankAppDataContext>()
                .AddDefaultTokenProviders();
+
+             services.AddResponseCaching();
             
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<ICustomerService, CustomerService>();
@@ -49,6 +51,9 @@ namespace Bank.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseResponseCaching();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -56,6 +61,7 @@ namespace Bank.Web
             app.UseAuthentication();
 
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

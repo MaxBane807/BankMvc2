@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Bank.Web.Models;
 using Bank.Web.Services.Interfaces;
 using Bank.Web.ViewModels;
@@ -23,14 +24,13 @@ namespace Bank.Web.Controllers
             _accountService = accountService;
         }
 
-        [ResponseCache(Duration = 30,Location = ResponseCacheLocation.Any)]
+        [ResponseCache(Duration = 30, Location = ResponseCacheLocation.Any)]
         public IActionResult Index()
         {
             var viewModel = new StartPageViewModel();
             viewModel.nrOfCustomers = _customerService.getNumberOfCustomers();
             viewModel.nrOfAccounts = _accountService.GetNrOfAccounts();
             viewModel.sumOfAllAccounts = _accountService.GetSumOfAccounts();
-
             return View(viewModel);
         }
      

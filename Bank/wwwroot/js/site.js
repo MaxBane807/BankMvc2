@@ -1,5 +1,5 @@
 ﻿var loadcount = 1;
-var moment = require("moment");
+
 
 $(document).ready(function () {
 
