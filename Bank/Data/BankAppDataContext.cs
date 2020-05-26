@@ -21,6 +21,12 @@ namespace Bank.Web.Data
         public virtual DbSet<Dispositions> Dispositions { get; set; }
         public virtual DbSet<Loans> Loans { get; set; }
         public virtual DbSet<PermenentOrder> PermenentOrder { get; set; }
-        public virtual DbSet<Transactions> Transactions { get; set; }      
+        public virtual DbSet<Transactions> Transactions { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Transactions>().HasIndex(x => x.AccountId);
+        }
     }
 }
