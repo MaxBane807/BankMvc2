@@ -31,7 +31,7 @@ function fetchTwenty(accountid) {
                 tablehead.appendChild(headtext);
                 tablerow.appendChild(tablehead);
 
-                
+                let dateProcessed = false;
                 for (let x in post)
                 {
                     if (x == "transactionId") {
@@ -40,10 +40,12 @@ function fetchTwenty(accountid) {
                     let tabledata = document.createElement("td");
 
                     let text;
-                    var dateformat = "YYYY-MM-DDTHH:mm:ss";
-                    var isDate = moment(post[x], dateformat, true).isValid();
-                    if (isDate) {
-                        text = document.createTextNode(post[x].toString().slice(0,10));
+                    //var dateformat = "YYYY-MM-DDTHH:mm:ss";
+                    //var isDate = moment(post[x], dateformat, true).isValid();
+
+                    if (dateProcessed == false) {
+                        text = document.createTextNode(post[x].toString().slice(0, 10));
+                        dateProcessed = true;
                     } else {
                         text = document.createTextNode(post[x]);
                     }

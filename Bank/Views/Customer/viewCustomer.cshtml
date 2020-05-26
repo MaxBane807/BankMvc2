@@ -64,21 +64,23 @@
 
 <h1 class="display-4">Accounts</h1>
 
-<table class="table">
+<div class="table-responsive">
+    <table class="table">
 
-    <tbody>
-    @foreach (var accountnr in Model.Accounts)
-    {
+        <tbody>
+            @foreach (var accountnr in Model.Accounts)
+            {
 
-        <tr>
-            <th scope="row">Account Nr: @accountnr</th>
-            <td><a asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
-            <td><a asp-controller="Transaction" asp-action="Insert" asp-route-accountid="@accountnr">Insert</a></td>
-            <td><a asp-controller="Transaction" asp-action="Withdraw" asp-route-accountID="@accountnr">Withdraw</a></td>
-            <td><a asp-controller="Transaction" asp-action="Transfer" asp-route-accountID="@accountnr">Transfer</a></td>
-        </tr>
+                <tr>
+                    <th scope="row">Account Nr: @accountnr</th>
+                    <td><a asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
+                    <td><a asp-controller="Transaction" asp-action="Insert" asp-route-accountid="@accountnr">Insert</a></td>
+                    <td><a asp-controller="Transaction" asp-action="Withdraw" asp-route-accountID="@accountnr">Withdraw</a></td>
+                    <td><a asp-controller="Transaction" asp-action="Transfer" asp-route-accountID="@accountnr">Transfer</a></td>
+                </tr>
 
-    }
-    </tbody>
-</table>
+            }
+        </tbody>
+    </table>
+</div>
 <hr class="mb-5"/>

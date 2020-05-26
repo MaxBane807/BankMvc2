@@ -16,32 +16,32 @@
     <button class="btn btn-primary" type="button" onclick="SearchCustomers()">Search</button>
 </div>
 
-
- <table class="table">
-     <thead>   
-         <tr>
-            <th scope="col">Customer ID</th>
-            <th scope="col">National ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">City</th>
-         </tr>
-     </thead>
-     <tbody>
-         @foreach(var customer in Model.Customers)
-         {
-             <tr>
-                 <th scope="row">@customer.CustomerId</th>
-                 <td>@customer.NationalId</td>
-                 <td>@customer.Givenname @customer.Surname</td>
-                 <td>@customer.Streetaddress</td>
-                 <td>@customer.City</td>
-                 <td><a asp-controller="Customer" asp-action="viewCustomer" asp-route-CustomerID="@customer.CustomerId">View</a></td>
-             </tr>
-         }
-     </tbody>
- </table> 
-
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Customer ID</th>
+                <th scope="col">National ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <th scope="row">@customer.CustomerId</th>
+                    <td>@customer.NationalId</td>
+                    <td>@customer.Givenname @customer.Surname</td>
+                    <td>@customer.Streetaddress</td>
+                    <td>@customer.City</td>
+                    <td><a asp-controller="Customer" asp-action="viewCustomer" asp-route-CustomerID="@customer.CustomerId">View</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <partial name="_PagerPartial" model="Model.PagingViewModel"/>
            
       
