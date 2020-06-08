@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Web", "Bank\Bank.Web.csproj", "{6ED7C83C-B42E-47AD-B712-3CD333D6542C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Tests", "Bank.Tests\Bank.Tests.csproj", "{AD4AAA75-9F64-4C4B-9EFC-B29F030DA397}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Web", "Bank.Web\Bank.Web.csproj", "{52182A79-B666-4578-8DD4-B3CCE5995095}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6ED7C83C-B42E-47AD-B712-3CD333D6542C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6ED7C83C-B42E-47AD-B712-3CD333D6542C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6ED7C83C-B42E-47AD-B712-3CD333D6542C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6ED7C83C-B42E-47AD-B712-3CD333D6542C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD4AAA75-9F64-4C4B-9EFC-B29F030DA397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD4AAA75-9F64-4C4B-9EFC-B29F030DA397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD4AAA75-9F64-4C4B-9EFC-B29F030DA397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD4AAA75-9F64-4C4B-9EFC-B29F030DA397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52182A79-B666-4578-8DD4-B3CCE5995095}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52182A79-B666-4578-8DD4-B3CCE5995095}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52182A79-B666-4578-8DD4-B3CCE5995095}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52182A79-B666-4578-8DD4-B3CCE5995095}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
