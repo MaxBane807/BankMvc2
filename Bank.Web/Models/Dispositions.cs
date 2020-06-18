@@ -13,7 +13,7 @@ namespace Bank.Web.Models
 
         [Key]
         public int DispositionId { get; set; }
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
         public int AccountId { get; set; }
         [Required]
         [StringLength(50)]

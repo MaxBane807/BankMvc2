@@ -1,3 +1,5 @@
+using System.Reflection;
+using AutoMapper;
 using Bank.Web.Data;
 using Bank.Web.Services.Classes;
 using Bank.Web.Services.Interfaces;
@@ -31,6 +33,8 @@ namespace Bank.Web
                .AddDefaultTokenProviders();
 
              services.AddResponseCaching();
+
+             services.AddAutoMapper(Assembly.GetAssembly(typeof(Startup)));
             
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<ICustomerService, CustomerService>();

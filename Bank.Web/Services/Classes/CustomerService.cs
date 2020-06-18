@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using AutoMapper;
 using Bank.Web.Data;
 using Bank.Web.Extensions;
 using Bank.Web.Models;
+using Bank.Web.ServiceModels.AdminServiceModels;
 using Bank.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,9 +13,11 @@ namespace Bank.Web.Services.Classes
     public class CustomerService : ICustomerService
     {
         private readonly BankAppDataContext _context;
-        public CustomerService(BankAppDataContext context)
+        private readonly IMapper _customerMapper;
+        public CustomerService(BankAppDataContext context, IMapper customerMapper)
         {
             _context = context;
+            _customerMapper = customerMapper;
         }
         
         public Customers getCustomerByID(string id)
@@ -25,7 +29,7 @@ namespace Bank.Web.Services.Classes
             return _context.Customers.Find(Int32.Parse(id));
         }
 
-        public decimal getTotalAmountByID(int id)
+        public decimal getTotalAmountByID(string id)
         {
             return _context.Customers.Include(z => z.Dispositions)
                 .ThenInclude(l => l.Account)
@@ -67,6 +71,30 @@ namespace Bank.Web.Services.Classes
             };
 
             return query.Count();
+        }
+
+        public void CreateCustomer(CreateCustomerServiceModel model)
+        {
+            //Den nya kunden ska också få ett "startkonto"
+            model.CustomerId = Guid.NewGuid().ToString();
+            Customers newCustomer = _customerMapper.Map<CreateCustomerServiceModel, Customers>(model);
+            _context.Customers.Add(newCustomer);
+
+            Accounts newAccount = new Accounts() {Balance = 0, Created = DateTime.Today, Frequency = "Monthly"};
+            _context.Accounts.Add(newAccount);
+
+            _context.SaveChanges();
+
+            Dispositions newDisposition = new Dispositions()
+                {AccountId = newAccount.AccountId, CustomerId = model.CustomerId, Type = "OWNER"};
+
+            _context.Dispositions.Add(newDisposition);
+            _context.SaveChanges();
+        }
+
+        public Customers GetCustomerByNationalId(string nationalId)
+        {
+            return _context.Customers.FirstOrDefault(x => x.NationalId == nationalId);
         }
     }
 }

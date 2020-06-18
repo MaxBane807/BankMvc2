@@ -27,6 +27,7 @@ namespace Bank.Web.Data
         {
             base.OnModelCreating(builder);
             builder.Entity<Transactions>().HasIndex(x => x.AccountId);
+            builder.Entity<Customers>().Property(x => x.CustomerId).ValueGeneratedNever();
         }
     }
 }

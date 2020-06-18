@@ -13,7 +13,7 @@ namespace Bank.Web.Models
         }
 
         [Key]
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
         [Required]
         [StringLength(6)]
         public string Gender { get; set; }

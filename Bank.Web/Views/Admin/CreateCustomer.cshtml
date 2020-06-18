@@ -6,7 +6,8 @@
                 <main>
                     <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-lg-5">
+                            <!-- Container column somewhat wider than usual -->
+                            <div class="col-lg-6">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create customer</h3></div>
                                     <div class="card-body">
@@ -19,26 +20,26 @@
                                                 <input class="form-check-input" asp-for="Gender" type="radio" id="Female" value="femal">
                                                 <label class="form-check-label" for="Female">Female</label>
                                             </div>
-                                            
+
                                             <div class="form-row">
-                                                <div class="col"><label class="small mb-1" asp-for="Givenname">Given name</label><input class="form-control py-4" asp-for="Givenname" type="text" placeholder="Enter given name" /> <span asp-validation-for="Givenname"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="Surname">Surname</label><input class="form-control py-4" asp-for="Surname" type="text" placeholder="Enter surname" /><span asp-validation-for="Surname"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="Birthday">Birthday</label><input id="pickDateCustomerBirthday" class="form-control py-4" asp-for="Birthday" type="text" placeholder="Enter birthday" /> <span asp-validation-for="Birthday"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Givenname">Given name</label><input class="form-control py-4" asp-for="Givenname" type="text" placeholder="Given name" /> <span asp-validation-for="Givenname"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Surname">Surname</label><input class="form-control py-4" asp-for="Surname" type="text" placeholder="Surname" /><span asp-validation-for="Surname"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Birthday">Birthday</label><input id="pickDateCustomerBirthday" class="form-control py-4" asp-for="Birthday" type="text" placeholder="Birthday" /> <span asp-validation-for="Birthday"></span></div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col"><label class="small mb-1" asp-for="Streetaddress">Street address</label><input class="form-control py-4" asp-for="Streetaddress" type="text" placeholder="Enter street address" /><span asp-validation-for="Streetaddress"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="City">City</label><input class="form-control py-4" asp-for="City" type="text" placeholder="Enter city" /> <span asp-validation-for="City"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="Zipcode">Zipcode</label><input class="form-control py-4" asp-for="Zipcode" type="number" placeholder="Enter zipcode" /> <span asp-validation-for="Zipcode"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Streetaddress">Street address</label><input class="form-control py-4" asp-for="Streetaddress" type="text" placeholder="Street" /><span asp-validation-for="Streetaddress"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="City">City</label><input class="form-control py-4" asp-for="City" type="text" placeholder="City" /> <span asp-validation-for="City"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Zipcode">Zipcode</label><input class="form-control py-4" asp-for="Zipcode" type="number" placeholder="Zipcode" /> <span asp-validation-for="Zipcode"></span></div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col"><label class="small mb-1" asp-for="Country">Country</label><input class="form-control py-4" asp-for="Country" type="text" placeholder="Enter country" /> <span asp-validation-for="Country"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="CountryCode">Country code</label><input class="form-control py-4" asp-for="CountryCode" type="text" placeholder="Enter country code" /> <span asp-validation-for="CountryCode"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="NationalId">National ID</label><input class="form-control py-4" asp-for="NationalId" type="text" placeholder="Enter national ID" /> <span asp-validation-for="NationalId"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Country">Country</label><input class="form-control py-4" asp-for="Country" type="text" placeholder="Country" /> <span asp-validation-for="Country"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="CountryCode">Country code</label><input class="form-control py-4" asp-for="CountryCode" type="text" placeholder="Country code" /> <span asp-validation-for="CountryCode"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="NationalId">National ID</label><input class="form-control py-4" asp-for="NationalId" type="text" placeholder="National ID" /> <span asp-validation-for="NationalId"></span></div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col"><label class="small mb-1" asp-for="Telephonecountrycode">Telephone national code</label><input class="form-control py-4" asp-for="Telephonecountrycode" type="text" placeholder="Enter telephone national code"/> <span asp-validation-for="Telephonecountrycode"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="Telephonenumber">Telephone number</label><input class="form-control py-4" asp-for="Telephonenumber" type="text" placeholder="Enter telephonenumber"/> <span asp-validation-for="Telephonenumber"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="Emailaddress">Email address</label><input class="form-control py-4" asp-for="Emailaddress" type="text" placeholder="Enter email address" /> <span asp-validation-for="Emailaddress"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Telephonecountrycode">Country calling code</label><input class="form-control py-4" asp-for="Telephonecountrycode" type="text" placeholder="Calling code" /> <span asp-validation-for="Telephonecountrycode"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Telephonenumber">Phone number</label><input class="form-control py-4" asp-for="Telephonenumber" type="text" placeholder="Phone" /> <span asp-validation-for="Telephonenumber"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Emailaddress">Email address</label><input class="form-control py-4" asp-for="Emailaddress" type="text" placeholder="Email address" /> <span asp-validation-for="Emailaddress"></span></div>
                                             </div>
 
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><input class="btn btn-primary" type="submit" value="Create" /></div>
@@ -56,5 +57,7 @@
 
     </body>
 
-
+@section Scripts{ 
+    <partial name="_ValidationScriptsPartial"/>
+}
 

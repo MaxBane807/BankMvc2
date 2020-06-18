@@ -6,7 +6,7 @@ namespace Bank.Web.Services.Interfaces
     public interface IAccountService
     {
         Accounts PrepareViewAccount(int id);
-        List<int> getAccountsByCustomerID(int customerid);
+        List<int> getAccountsByCustomerID(string customerid);
 
         int GetNrOfAccounts();
         decimal GetSumOfAccounts();

@@ -19,7 +19,7 @@ namespace Bank.Web.Services.Classes
         {
             return _context.Accounts.FirstOrDefault(x => x.AccountId == id);
         }
-        public List<int> getAccountsByCustomerID(int customerid)
+        public List<int> getAccountsByCustomerID(string customerid)
         {
             return _context.Customers
                 .Include(x => x.Dispositions)
