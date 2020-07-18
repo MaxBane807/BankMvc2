@@ -11,7 +11,9 @@ $(document).ready(function () {
     
 });
 
-function fetchTwenty(accountid) {  
+
+
+function fetchTwenty(accountid,firstLoad) {  
 
     $.ajax({
         url: "/Account/LoadTwentyMoreTransactions?accountid=" + accountid + "&nrToSkip=" + loadcount,
@@ -19,42 +21,44 @@ function fetchTwenty(accountid) {
             console.dir(result);
 
             if (result.anyMore == false) {
-                $("#loadTwentyButton").hide();
+                $("#loadTwentyButton").hide();                
             }
-            
-            for (let post of result.transactions) {
 
-                let tablerow = document.createElement("tr");
-                let tablehead = document.createElement("th");
-                tablehead.setAttribute("scope", "row");
-                let headtext = document.createTextNode(post.transactionId);
-                tablehead.appendChild(headtext);
-                tablerow.appendChild(tablehead);
+            if (firstLoad == false) {
 
-                let dateProcessed = false;
-                for (let x in post)
-                {
-                    if (x == "transactionId") {
-                        continue;
+                for (let post of result.transactions) {
+
+                    let tablerow = document.createElement("tr");
+                    let tablehead = document.createElement("th");
+                    tablehead.setAttribute("scope", "row");
+                    let headtext = document.createTextNode(post.transactionId);
+                    tablehead.appendChild(headtext);
+                    tablerow.appendChild(tablehead);
+
+                    let dateProcessed = false;
+                    for (let x in post) {
+                        if (x == "transactionId") {
+                            continue;
+                        }
+                        let tabledata = document.createElement("td");
+
+                        let text;
+                        //var dateformat = "YYYY-MM-DDTHH:mm:ss";
+                        //var isDate = moment(post[x], dateformat, true).isValid();
+
+                        if (dateProcessed == false) {
+                            text = document.createTextNode(post[x].toString().slice(0, 10));
+                            dateProcessed = true;
+                        } else {
+                            text = document.createTextNode(post[x]);
+                        }
+                        tabledata.appendChild(text);
+                        tablerow.appendChild(tabledata);
                     }
-                    let tabledata = document.createElement("td");
-
-                    let text;
-                    //var dateformat = "YYYY-MM-DDTHH:mm:ss";
-                    //var isDate = moment(post[x], dateformat, true).isValid();
-
-                    if (dateProcessed == false) {
-                        text = document.createTextNode(post[x].toString().slice(0, 10));
-                        dateProcessed = true;
-                    } else {
-                        text = document.createTextNode(post[x]);
-                    }
-                    tabledata.appendChild(text);
-                    tablerow.appendChild(tabledata);
+                    $("tbody").append(tablerow);
                 }
-                $("tbody").append(tablerow);
-            }           
-            loadcount += 1;
+                loadcount += 1;
+            }
         }
     })
 

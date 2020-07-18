@@ -17,9 +17,10 @@
                                                 <label class="form-check-label" for="Male">Male</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" asp-for="Gender" type="radio" id="Female" value="femal">
+                                                <input class="form-check-input" asp-for="Gender" type="radio" id="Female" value="female">
                                                 <label class="form-check-label" for="Female">Female</label>
                                             </div>
+                                            <div><span asp-validation-for="Gender"></span></div>
 
                                             <div class="form-row">
                                                 <div class="col"><label class="small mb-1" asp-for="Givenname">Given name</label><input class="form-control py-4" asp-for="Givenname" type="text" placeholder="Given name" /> <span asp-validation-for="Givenname"></span></div>

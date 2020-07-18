@@ -3,24 +3,68 @@
 @{
     ViewData["Title"] = "viewCustomer";
 }
+@{string id = null;}
 
-<dl class="row mt-3">
-    <dt class="col">Name</dt>
-    <dd class="col">@Model.Givenname @Model.Surname</dd>
-</dl>
+@if (Model.UniqueId != null)
+{
+    id = Model.UniqueId;
+}
+else
+{
+    id = Model.CustomerId.ToString();
+}
 
-<dl class="row">
-    <dt class="col">Gender</dt>
-    <dd class="col">@Model.Gender</dd>
-</dl>
+    <form>
+        <div class="form-group row mt-3">
+            <label class="col-form-label col-lg-2">Customer ID</label>
+            <div class="col-lg-10">
+                <input readonly value="@id" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-2">Name</label>
+            <div class="col-lg-5">
+                <input class="form-control" value="@Model.Givenname" placeholder="Given Name"/>
+            </div>
+            <div class="col-lg-5">
+                <input class="form-control" value="@Model.Surname" placeholder="Surname" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-2">Gender</label>
+            <div class="col-lg-10">
+                <select class="form-control" asp-for="@Model.Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-2">Day of Birth</label>
+            <div class="col-lg-10">
+                <input asp-for="@Model.Birthday" value="@Model.Birthday.Value.Date.ToShortDateString()" class="form-control" type="date" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-2">Address</label>
+            <div class="col-lg-4">
+                <input asp-for="@Model.Streetaddress" value="@Model.Streetaddress" placeholder="Street Address" class="form-control" />
+            </div>
+            <div class="col-lg-3">
+                <input asp-for="@Model.City" value="@Model.City" placeholder="City" class="form-control"/>
+            </div>
+            <div class="col-lg-3">
+                <input asp-for="@Model.Country" value="@Model.Country" placeholder="Country" class="form-control"/>
+            </div>
+        </div>
+        <button>Save changes</button>
+    </form>
 
-<dl class="row">
-    <dt class="col">Day of birth</dt>
-    @if (Model.Birthday != null)
-    {
-        <dd class="col">@Model.Birthday.Value.Date.ToLongDateString()</dd>
-    }
-</dl>
+
+
+
+
+
 
 <dl class="row">
     <dt class="col">Address</dt>

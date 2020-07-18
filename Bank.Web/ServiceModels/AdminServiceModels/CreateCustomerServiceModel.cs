@@ -7,7 +7,7 @@ namespace Bank.Web.ServiceModels.AdminServiceModels
 {
     public class CreateCustomerServiceModel
     {
-        public string CustomerId { get; set; }
+        public int CustomerId { get; set; }
         public string Gender { get; set; }
        
         public string Givenname { get; set; }

@@ -7,6 +7,10 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20200425095201_InitialTest.cs" />
     <Compile Remove="Data\Migrations\20200425095201_InitialTest.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200618065233_CustomerIDStringAndNoIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200618065233_CustomerIDStringAndNoIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200717120846_UniqueId.cs" />
+    <Compile Remove="Data\Migrations\20200717120846_UniqueId.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

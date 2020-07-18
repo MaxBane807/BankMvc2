@@ -4,44 +4,45 @@
 @{
     ViewData["Title"] = "ViewAccount";
 }
+    <body onload="fetchTwenty('@Model.AccountID',true)">
+        <h1>Account @Model.AccountID</h1>
+        <h3>Balance: @Model.AccountBalance</h3>
 
-<h1>Account @Model.AccountID</h1>
-<h3>Balance: @Model.AccountBalance</h3>
-
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Transaction ID</th>
-                <th scope="col">Date</th>
-                <th scope="col">Type</th>
-                <th scope="col">Operation</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Balance</th>
-                <th scope="col">Symbol</th>
-                <th scope="col">Bank</th>
-                <th scope="col">Other Account</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var transaction in Model.Transactions)
-            {
-                <tr>
-                    <th scope="row">@transaction.TransactionId</th>
-                    <td>@transaction.Date.ToString().Substring(0, 10)</td>
-                    <td>@transaction.Type</td>
-                    <td>@transaction.Operation</td>
-                    <td>@transaction.Amount</td>
-                    <td>@transaction.Balance</td>
-                    <td>@transaction.Symbol</td>
-                    <td>@transaction.Bank</td>
-                    <td>@transaction.OtherAccount</td>
-                </tr>
-            }
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Transaction ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Operation</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Balance</th>
+                        <th scope="col">Symbol</th>
+                        <th scope="col">Bank</th>
+                        <th scope="col">Other Account</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model.Transactions)
+                    {
+                        <tr>
+                            <th scope="row">@transaction.TransactionId</th>
+                            <td>@transaction.Date.ToString().Substring(0, 10)</td>
+                            <td>@transaction.Type</td>
+                            <td>@transaction.Operation</td>
+                            <td>@transaction.Amount</td>
+                            <td>@transaction.Balance</td>
+                            <td>@transaction.Symbol</td>
+                            <td>@transaction.Bank</td>
+                            <td>@transaction.OtherAccount</td>
+                        </tr>
+                    }
 
 
-        </tbody>
-    </table>
-</div>
-<button id="loadTwentyButton" onclick="fetchTwenty('@Model.AccountID')" class="btn btn-primary">Load 20 more</button>
+                </tbody>
+            </table>
+        </div>
+        <button id="loadTwentyButton" onclick="fetchTwenty('@Model.AccountID', false)" class="btn btn-primary">Load 20 more</button>
+    </body>
 

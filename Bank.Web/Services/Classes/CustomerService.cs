@@ -20,16 +20,17 @@ namespace Bank.Web.Services.Classes
             _customerMapper = customerMapper;
         }
         
-        public Customers getCustomerByID(string id)
+        public Customers getCustomerByUniqueID(string uniqueId)
         {
-            if (!id.IsInteger())
+            var customer = _context.Customers.FirstOrDefault(x => x.UniqueId == uniqueId);
+            if (customer == null)
             {
-                return null;
+                customer = _context.Customers.FirstOrDefault(x => x.CustomerId == Int32.Parse(uniqueId));
             }
-            return _context.Customers.Find(Int32.Parse(id));
+            return customer;
         }
 
-        public decimal getTotalAmountByID(string id)
+        public decimal getTotalAmountByID(int id)
         {
             return _context.Customers.Include(z => z.Dispositions)
                 .ThenInclude(l => l.Account)
@@ -73,11 +74,12 @@ namespace Bank.Web.Services.Classes
             return query.Count();
         }
 
-        public void CreateCustomer(CreateCustomerServiceModel model)
+        public string CreateCustomer(CreateCustomerServiceModel model)
         {
             //Den nya kunden ska också få ett "startkonto"
-            model.CustomerId = Guid.NewGuid().ToString();
+            
             Customers newCustomer = _customerMapper.Map<CreateCustomerServiceModel, Customers>(model);
+            newCustomer.UniqueId = Guid.NewGuid().ToString();
             _context.Customers.Add(newCustomer);
 
             Accounts newAccount = new Accounts() {Balance = 0, Created = DateTime.Today, Frequency = "Monthly"};
@@ -86,10 +88,12 @@ namespace Bank.Web.Services.Classes
             _context.SaveChanges();
 
             Dispositions newDisposition = new Dispositions()
-                {AccountId = newAccount.AccountId, CustomerId = model.CustomerId, Type = "OWNER"};
+                {AccountId = newAccount.AccountId, CustomerId = newCustomer.CustomerId, Type = "OWNER"};
 
             _context.Dispositions.Add(newDisposition);
             _context.SaveChanges();
+
+            return newCustomer.UniqueId;
         }
 
         public Customers GetCustomerByNationalId(string nationalId)

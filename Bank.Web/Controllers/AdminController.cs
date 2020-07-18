@@ -33,7 +33,8 @@ namespace Bank.Web.Controllers
             CustomerAlreadyRegistered(model.NationalId);
             if (ModelState.IsValid)
             {
-                _customerService.CreateCustomer(_customerMapper.Map<CreateCustomerViewModel,CreateCustomerServiceModel>(model));
+                string uniqueId = _customerService.CreateCustomer(_customerMapper.Map<CreateCustomerViewModel,CreateCustomerServiceModel>(model));
+                return RedirectToAction("viewCustomer", "Customer", new { searchID = uniqueId });
             }
             
             return View(model);

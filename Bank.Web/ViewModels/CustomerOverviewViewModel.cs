@@ -5,7 +5,9 @@ using System.ComponentModel.DataAnnotations;
 namespace Bank.Web.ViewModels
 {
     public class CustomerOverviewViewModel
-    {
+    {       
+        public int CustomerId { get; set; }
+        public string UniqueId { get; set; }
         [Required]
         [StringLength(6)]
         public string Gender { get; set; }

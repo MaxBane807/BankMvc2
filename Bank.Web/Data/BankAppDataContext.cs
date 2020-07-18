@@ -26,8 +26,7 @@ namespace Bank.Web.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<Transactions>().HasIndex(x => x.AccountId);
-            builder.Entity<Customers>().Property(x => x.CustomerId).ValueGeneratedNever();
+            builder.Entity<Transactions>().HasIndex(x => x.AccountId);           
         }
     }
 }

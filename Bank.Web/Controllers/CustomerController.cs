@@ -19,14 +19,16 @@ namespace Bank.Web.Controllers
             _accountService = accountService;
         }            
 
-        public IActionResult viewCustomer(string customerID)
+        public IActionResult viewCustomer(string searchID)
         {
-            var customer = _customerService.getCustomerByID(customerID);
+            var customer = _customerService.getCustomerByUniqueID(searchID);
 
             if (customer != null)
             {
                 var viewmodel = new CustomerOverviewViewModel()
-                {
+                {                    
+                    CustomerId = customer.CustomerId,
+                    UniqueId = customer.UniqueId,
                     Birthday = customer.Birthday,
                     City = customer.City,
                     Country = customer.Country,

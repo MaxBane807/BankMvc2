@@ -15,7 +15,8 @@ namespace Bank.Web.MapperProfiles
         {
             CreateMap<CreateCustomerViewModel, CreateCustomerServiceModel>()
                 .ForMember(x => x.CustomerId, opt => opt.Ignore());
-            CreateMap<CreateCustomerServiceModel, Customers>();
+            CreateMap<CreateCustomerServiceModel, Customers>()
+                .ForMember(x => x.CustomerId, opt => opt.Ignore());
         }
     }
 }

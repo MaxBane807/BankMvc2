@@ -12,7 +12,7 @@ namespace Bank.Web.ViewModels
 
         public class CustomerViewModel
         {
-            public string CustomerId { get; set; }
+            public int CustomerId { get; set; }
 
             public string NationalId { get; set; }
 

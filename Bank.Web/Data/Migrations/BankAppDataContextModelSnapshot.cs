@@ -166,8 +166,8 @@ namespace Bank.Web.Data.Migrations
 
             modelBuilder.Entity("Bank.Web.Models.Customers", b =>
                 {
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("date");
@@ -223,6 +223,9 @@ namespace Bank.Web.Data.Migrations
                         .HasColumnType("nvarchar(25)")
                         .HasMaxLength(25);
 
+                    b.Property<string>("UniqueId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Zipcode")
                         .IsRequired()
                         .HasColumnType("nvarchar(15)")
@@ -243,8 +246,8 @@ namespace Bank.Web.Data.Migrations
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -527,7 +530,9 @@ namespace Bank.Web.Data.Migrations
 
                     b.HasOne("Bank.Web.Models.Customers", "Customer")
                         .WithMany("Dispositions")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Bank.Web.Models.Loans", b =>
