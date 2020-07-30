@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using AutoMapper;
 using Bank.Web.Data;
 using Bank.Web.Extensions;
 using Bank.Web.Models;
-using Bank.Web.ServiceModels.AdminServiceModels;
 using Bank.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Bank.Web.ServiceModels.CustomerServiceModels;
 
 namespace Bank.Web.Services.Classes
 {
     public class CustomerService : ICustomerService
     {
         private readonly BankAppDataContext _context;
-        private readonly IMapper _customerMapper;
-        public CustomerService(BankAppDataContext context, IMapper customerMapper)
+        private readonly IMapper _mapper;
+        public CustomerService(BankAppDataContext context, IMapper mapper)
         {
             _context = context;
-            _customerMapper = customerMapper;
+            _mapper = mapper;
         }
         
         public Customers getCustomerByUniqueID(string uniqueId)
@@ -78,7 +79,7 @@ namespace Bank.Web.Services.Classes
         {
             //Den nya kunden ska också få ett "startkonto"
             
-            Customers newCustomer = _customerMapper.Map<CreateCustomerServiceModel, Customers>(model);
+            Customers newCustomer = _mapper.Map<CreateCustomerServiceModel, Customers>(model);
             newCustomer.UniqueId = Guid.NewGuid().ToString();
             _context.Customers.Add(newCustomer);
 
@@ -94,6 +95,25 @@ namespace Bank.Web.Services.Classes
             _context.SaveChanges();
 
             return newCustomer.UniqueId;
+        }
+
+        public void ChangeCustomer(ChangeCustomerServiceModel model)
+        {
+            var customer = _mapper.Map<ChangeCustomerServiceModel, Customers>(model);         
+            try
+            {                
+                if (_context.Customers.Any(x => x.CustomerId == customer.CustomerId) == false)
+                {
+                    throw new InvalidOperationException("The customer that the program tried to change diden't exist. A new customer was added");
+                }
+                _context.Entry(customer).State = EntityState.Modified;
+                _context.SaveChanges();                
+            }
+            catch (InvalidOperationException e)
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+            }
         }
 
         public Customers GetCustomerByNationalId(string nationalId)

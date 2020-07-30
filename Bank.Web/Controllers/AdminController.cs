@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Bank.Web.Models;
-using Bank.Web.ServiceModels.AdminServiceModels;
 using Bank.Web.Services.Interfaces;
-using Bank.Web.ViewModels.AdminViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,37 +17,8 @@ namespace Bank.Web.Controllers
             _customerService = customerService;
         }
 
-        public IActionResult CreateCustomer()
-        {
-            
-            var model = new CreateCustomerViewModel();
-            return View(model);
-        }
+     
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreateCustomer(CreateCustomerViewModel model)
-        {
-            CustomerAlreadyRegistered(model.NationalId);
-            if (ModelState.IsValid)
-            {
-                string uniqueId = _customerService.CreateCustomer(_customerMapper.Map<CreateCustomerViewModel,CreateCustomerServiceModel>(model));
-                return RedirectToAction("viewCustomer", "Customer", new { searchID = uniqueId });
-            }
-            
-            return View(model);
-        }
-
-        private void CustomerAlreadyRegistered(string nationalId)
-        {
-            if (string.IsNullOrEmpty(nationalId) == false)
-            {
-               Customers customer = _customerService.GetCustomerByNationalId(nationalId);
-               if (customer != null)
-               {
-                   ModelState.AddModelError(string.Empty,"Customer already registered");
-               } 
-            }
-        }
+     
     }
 }

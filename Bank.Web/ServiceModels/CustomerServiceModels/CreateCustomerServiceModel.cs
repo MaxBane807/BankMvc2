@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bank.Web.ServiceModels.AdminServiceModels
+namespace Bank.Web.ServiceModels.CustomerServiceModels
 {
     public class CreateCustomerServiceModel
     {

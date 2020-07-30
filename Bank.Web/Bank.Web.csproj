@@ -33,4 +33,10 @@
     <None Include="wwwroot\assets\demo\datatables-demo.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ServiceModels\AdminServiceModels\" />
+    <Folder Include="ViewModels\AdminViewModels\" />
+    <Folder Include="Views\Admin\" />
+  </ItemGroup>
+
 </Project>

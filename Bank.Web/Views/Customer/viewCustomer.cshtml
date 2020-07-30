@@ -14,117 +14,163 @@ else
     id = Model.CustomerId.ToString();
 }
 
-    <form>
-        <div class="form-group row mt-3">
-            <label class="col-form-label col-lg-2">Customer ID</label>
-            <div class="col-lg-10">
-                <input readonly value="@id" class="form-control" />
-            </div>
+<form>
+    <div class="form-group row mt-3">
+        <label class="col-form-label col-lg-2">Customer ID</label>
+        <div class="col-lg-10">
+            <input readonly value="@id" class="form-control bg-white border-white" />
         </div>
-        <div class="form-group row">
-            <label class="col-form-label col-lg-2">Name</label>
-            <div class="col-lg-5">
-                <input class="form-control" value="@Model.Givenname" placeholder="Given Name"/>
-            </div>
-            <div class="col-lg-5">
-                <input class="form-control" value="@Model.Surname" placeholder="Surname" />
-            </div>
+    </div>
+    <input hidden asp-for="@Model.CustomerId" value="@Model.CustomerId" />
+    <input hidden asp-for="@Model.UniqueId" value="@Model.UniqueId" />
+    <div class="form-group row bg-info text-white">
+        <label class="col-form-label col-lg-2">Total Balance</label>
+        <div class="col-lg-10">
+            <input readonly asp-for="@Model.TotalAmount" value="@Model.TotalAmount.ToString(System.Globalization.CultureInfo.InvariantCulture)" class="form-control bg-info text-white border-info" type="number" step="any"/>
         </div>
-        <div class="form-group row">
-            <label class="col-form-label col-lg-2">Gender</label>
-            <div class="col-lg-10">
-                <select class="form-control" asp-for="@Model.Gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2">Name</label>
+        <div class="col-lg-5">
+            <input asp-for="@Model.Givenname" class="form-control border-white" value="@Model.Givenname" placeholder="Given Name" />
+            <span class="text-danger" asp-validation-for="@Model.Givenname"></span>
         </div>
-        <div class="form-group row">
-            <label class="col-form-label col-lg-2">Day of Birth</label>
-            <div class="col-lg-10">
-                <input asp-for="@Model.Birthday" value="@Model.Birthday.Value.Date.ToShortDateString()" class="form-control" type="date" />
-            </div>
+        <div class="col-lg-5">
+            <input asp-for="@Model.Surname" class="form-control border-white" value="@Model.Surname" placeholder="Surname" />
+            <span class="text-danger" asp-validation-for="@Model.Surname"></span>
         </div>
-        <div class="form-group row">
-            <label class="col-form-label col-lg-2">Address</label>
-            <div class="col-lg-4">
-                <input asp-for="@Model.Streetaddress" value="@Model.Streetaddress" placeholder="Street Address" class="form-control" />
-            </div>
-            <div class="col-lg-3">
-                <input asp-for="@Model.City" value="@Model.City" placeholder="City" class="form-control"/>
-            </div>
-            <div class="col-lg-3">
-                <input asp-for="@Model.Country" value="@Model.Country" placeholder="Country" class="form-control"/>
-            </div>
+    </div>
+    <div class="form-group row bg-info text-white">
+        <label class="col-form-label col-lg-2">Gender</label>
+        <div class="col-lg-10">
+            <select class="form-control bg-info text-white border-info" asp-for="@Model.Gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <span class="text-danger" asp-validation-for="@Model.Gender"></span>
         </div>
-        <button>Save changes</button>
-    </form>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2">Day of Birth</label>
+        <div class="col-lg-10">
+            <input asp-for="@Model.Birthday" value="@(Model.Birthday.HasValue ? Model.Birthday.Value.Date.ToShortDateString() : null)" class="form-control border-white" type="date" />
+            <span class="text-danger" asp-validation-for="@Model.Birthday"></span>
+        </div>
+    </div>
+    <div class="form-group row bg-info text-white">
+        <label class="col-form-label col-lg-2">Address</label>
+        <div class="col-lg-4">
+            <input asp-for="@Model.Streetaddress" value="@Model.Streetaddress" placeholder="Street Address" class="form-control bg-info text-white border-info" />
+            <span class="text-danger" asp-validation-for="@Model.Streetaddress"></span>
+        </div>
+        <div class="col-lg-3">
+            <input asp-for="@Model.City" value="@Model.City" placeholder="City" class="form-control bg-info text-white border-info" />
+            <span class="text-danger" asp-validation-for="@Model.City"></span>
+        </div>
+        <div class="col-lg-3">
+            <input asp-for="@Model.Country" value="@Model.Country" placeholder="Country" class="form-control bg-info text-white border-info" />
+            <span class="text-danger" asp-validation-for="@Model.Country"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2">Country Code</label>
+        <div class="col-lg-10">
+            <input asp-for="@Model.CountryCode" value="@Model.CountryCode" class="form-control border-white" />
+            <span class="text-danger" asp-validation-for="@Model.CountryCode"></span>
+        </div>
+    </div>
+    <div class="form-group row bg-info text-white">
+        <label class="col-form-label col-lg-2">National ID</label>
+        <div class="col-lg-10">
+            <input asp-for="@Model.NationalId" value="@Model.NationalId" class="form-control bg-info text-white border-info" />
+            <span class="text-danger" asp-validation-for="@Model.NationalId"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2">Email</label>
+        <div class="col-lg-10">
+            <input asp-for="@Model.Emailaddress" value="@Model.Emailaddress" type="email" class="form-control border-white" />
+            <span class="text-danger" asp-validation-for="@Model.Emailaddress"></span>
+        </div>
+    </div>
+    <div class="form-group row bg-info text-white">
+        <label class="col-form-label col-lg-2">Telephone Country Code</label>
+        <div class="col-lg-10">
+            <input asp-for="@Model.Telephonecountrycode" value="@Model.Telephonecountrycode" class="form-control bg-info text-white border-info" />
+            <span class="text-danger" asp-validation-for="@Model.Telephonecountrycode"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2">Phonenumber</label>
+        <div class="col-lg-10">
+            <input asp-for="@Model.Telephonenumber" value="@Model.Telephonenumber" class="form-control border-white" type="tel" />
+            <span class="text-danger" asp-validation-for="@Model.Telephonenumber"></span>
+        </div>
+    </div>
+    <div class="form-group row bg-info text-white">
+        <label class="col-form-label col-lg-2">Country Code</label>
+        <div class="col-lg-10">
+            <input asp-for="@Model.CountryCode" value="@Model.CountryCode" class="form-control bg-info text-white border-info" />
+            <span class="text-danger" asp-validation-for="@Model.CountryCode"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2">Zipcode</label>
+        <div class="col-lg-10">
+            <input asp-for="@Model.Zipcode" value="@Model.Zipcode" class="form-control border-white" />
+            <span class="text-danger" asp-validation-for="@Model.Zipcode"></span>
+        </div>
+    </div>
+    <div class="row">
+        <button asp-controller="Customer" asp-action="ChangeCustomer" class="btn btn-primary">Save changes</button>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        @if (Model.CustomerChanged)
+        {
+            <p class="text-success">Customer changed successfully!</p>
+        }
+    </div>
+</form>
 
+<h1 class="text-center">Accounts</h1>
 
-
-
-
-
-
-<dl class="row">
-    <dt class="col">Address</dt>
-    <dd class="col">@Model.Streetaddress @Model.City @Model.Country</dd>
-</dl>
-
-<dl class="row">
-    <dt class="col">Country code</dt>
-    <dd class="col">@Model.CountryCode</dd>
-</dl>
-
-<dl class="row">
-    <dt class="col">National ID</dt>
-    <dd class="col">@Model.NationalId</dd>
-</dl>
-
-<dl class="row">
-    <dt class="col">Email</dt>
-    <dd class="col">@Model.Emailaddress</dd>
-</dl>
-
-<dl class="row">
-    <dt class="col">Phone number</dt>
-    <dd class="col">@Model.Telephonenumber</dd>
-</dl>
-
-<dl class="row">
-    <dt class="col">Telephone country code</dt>
-    <dd class="col">@Model.Telephonecountrycode</dd>
-</dl>
-
-<dl class="row">
-    <dt class="col">Zipcode</dt>
-    <dd class="col">@Model.Zipcode</dd>
-</dl>
-
-<dl class="row">
-    <dt class="col">Total balance</dt>
-    <dd class="col">@Model.TotalAmount</dd>
-</dl>
-
-<h1 class="display-4">Accounts</h1>
-
-<div class="table-responsive">
+<div class="table-responsive mb-3">
     <table class="table">
 
         <tbody>
+            @{bool blueRow = true;}
+
             @foreach (var accountnr in Model.Accounts)
             {
+                if (blueRow)
+                {
+                    <tr class="bg-info">
+                        <th class="text-white" scope="row">Account Nr: @accountnr</th>
+                        <td><a class="text-white" asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
+                        <td><a class="text-white" asp-controller="Transaction" asp-action="Insert" asp-route-accountid="@accountnr">Insert</a></td>
+                        <td><a class="text-white" asp-controller="Transaction" asp-action="Withdraw" asp-route-accountID="@accountnr">Withdraw</a></td>
+                        <td><a class="text-white" asp-controller="Transaction" asp-action="Transfer" asp-route-accountID="@accountnr">Transfer</a></td>
+                    </tr>
 
-                <tr>
-                    <th scope="row">Account Nr: @accountnr</th>
-                    <td><a asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
-                    <td><a asp-controller="Transaction" asp-action="Insert" asp-route-accountid="@accountnr">Insert</a></td>
-                    <td><a asp-controller="Transaction" asp-action="Withdraw" asp-route-accountID="@accountnr">Withdraw</a></td>
-                    <td><a asp-controller="Transaction" asp-action="Transfer" asp-route-accountID="@accountnr">Transfer</a></td>
-                </tr>
+                    blueRow = false;
+                }
+                else
+                {
+                    <tr>
+                        <th scope="row">Account Nr: @accountnr</th>
+                        <td><a asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
+                        <td><a asp-controller="Transaction" asp-action="Insert" asp-route-accountid="@accountnr">Insert</a></td>
+                        <td><a asp-controller="Transaction" asp-action="Withdraw" asp-route-accountID="@accountnr">Withdraw</a></td>
+                        <td><a asp-controller="Transaction" asp-action="Transfer" asp-route-accountID="@accountnr">Transfer</a></td>
+                    </tr>
 
+                    blueRow = true;
+                }
             }
         </tbody>
     </table>
 </div>
-<hr class="mb-5"/>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

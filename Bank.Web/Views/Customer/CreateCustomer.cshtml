@@ -1,4 +1,4 @@
-﻿@model Bank.Web.ViewModels.AdminViewModels.CreateCustomerViewModel
+﻿@model Bank.Web.ViewModels.CreateCustomerViewModel
 
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -11,7 +11,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create customer</h3></div>
                                     <div class="card-body">
-                                        <form asp-controller="Admin" asp-action="CreateCustomer" method="post">
+                                        <form asp-controller="Customer" asp-action="CreateCustomer" method="post">
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" asp-for="Gender" id="Male" value="male">
                                                 <label class="form-check-label" for="Male">Male</label>
@@ -23,9 +23,9 @@
                                             <div><span asp-validation-for="Gender"></span></div>
 
                                             <div class="form-row">
-                                                <div class="col"><label class="small mb-1" asp-for="Givenname">Given name</label><input class="form-control py-4" asp-for="Givenname" type="text" placeholder="Given name" /> <span asp-validation-for="Givenname"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Givenname">Given name</label><input class="form-control py-4" asp-for="Givenname" type="text" placeholder="First name" /> <span asp-validation-for="Givenname"></span></div>
                                                 <div class="col"><label class="small mb-1" asp-for="Surname">Surname</label><input class="form-control py-4" asp-for="Surname" type="text" placeholder="Surname" /><span asp-validation-for="Surname"></span></div>
-                                                <div class="col"><label class="small mb-1" asp-for="Birthday">Birthday</label><input id="pickDateCustomerBirthday" class="form-control py-4" asp-for="Birthday" type="text" placeholder="Birthday" /> <span asp-validation-for="Birthday"></span></div>
+                                                <div class="col"><label class="small mb-1" asp-for="Birthday">Birthday</label><input id="pickDateCustomerBirthday" class="form-control py-4" asp-for="Birthday" type="date" placeholder="Birthday" /> <span asp-validation-for="Birthday"></span></div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col"><label class="small mb-1" asp-for="Streetaddress">Street address</label><input class="form-control py-4" asp-for="Streetaddress" type="text" placeholder="Street" /><span asp-validation-for="Streetaddress"></span></div>

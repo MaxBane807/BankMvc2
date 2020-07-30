@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Linq;
+using AutoMapper;
+using Bank.Web.ServiceModels.CustomerServiceModels;
 using Bank.Web.Services.Interfaces;
 using Bank.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Bank.Web.Models;
 
 namespace Bank.Web.Controllers
 {
@@ -12,11 +15,13 @@ namespace Bank.Web.Controllers
     {
         private readonly ICustomerService _customerService;
         private readonly IAccountService _accountService;
+        private readonly IMapper _mapper;
         
-        public CustomerController(ICustomerService customerService, IAccountService accountService)
+        public CustomerController(ICustomerService customerService, IAccountService accountService, IMapper mapper)
         {
             _customerService = customerService;
             _accountService = accountService;
+            _mapper = mapper;
         }            
 
         public IActionResult viewCustomer(string searchID)
@@ -83,6 +88,56 @@ namespace Bank.Web.Controllers
             listCustomersViewModel.PagingViewModel.MaxPages = (int)Math.Ceiling(pageCount);
 
             return View(listCustomersViewModel);
+        }
+
+        public IActionResult CreateCustomer()
+        {
+            var model = new CreateCustomerViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateCustomer(CreateCustomerViewModel model)
+        {
+            CustomerAlreadyRegistered(model.NationalId);
+            if (ModelState.IsValid)
+            {
+                string uniqueId = _customerService.CreateCustomer(_mapper.Map<CreateCustomerViewModel, CreateCustomerServiceModel>(model));
+                return RedirectToAction("viewCustomer", new { searchID = uniqueId });
+            }
+
+            return View(model);
+        }
+
+
+        public IActionResult ChangeCustomer(CustomerOverviewViewModel model)
+        {           
+            if (ModelState.IsValid)
+            {
+                var servicemodel = _mapper.Map<CustomerOverviewViewModel, ChangeCustomerServiceModel>(model);
+                _customerService.ChangeCustomer(servicemodel);            
+                model.CustomerChanged = true;                         
+            }
+            else
+            {
+                model.CustomerChanged = false;               
+            }
+
+            model.Accounts = _accountService.getAccountsByCustomerID(model.CustomerId);
+            return View("viewCustomer", model);
+        }
+
+        private void CustomerAlreadyRegistered(string nationalId)
+        {
+            if (string.IsNullOrEmpty(nationalId) == false)
+            {
+                Customers customer = _customerService.GetCustomerByNationalId(nationalId);
+                if (customer != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Customer already registered");
+                }
+            }
         }
     }
 }

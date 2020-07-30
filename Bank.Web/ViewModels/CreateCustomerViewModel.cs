@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace Bank.Web.ViewModels
 {
-    public class CustomerOverviewViewModel
-    {       
-        public bool CustomerChanged { get; set; }
-        
-        public int CustomerId { get; set; }
-        public string UniqueId { get; set; }
+    public class CreateCustomerViewModel
+    {
         [Required]
         [StringLength(6)]
+        //radio
         public string Gender { get; set; }
         [Required]
         [StringLength(100)]
@@ -27,6 +26,7 @@ namespace Bank.Web.ViewModels
         public string City { get; set; }
         [Required]
         [StringLength(15)]
+        //Kan bli typecastproblem
         public string Zipcode { get; set; }
         [Required]
         [StringLength(100)]
@@ -34,6 +34,7 @@ namespace Bank.Web.ViewModels
         [Required]
         [StringLength(2)]
         public string CountryCode { get; set; }
+        
         public DateTime? Birthday { get; set; }
         [StringLength(20)]
         public string NationalId { get; set; }
@@ -43,9 +44,5 @@ namespace Bank.Web.ViewModels
         public string Telephonenumber { get; set; }
         [StringLength(100)]
         public string Emailaddress { get; set; }
-
-        public decimal TotalAmount { get; set; }
-
-        public List<int> Accounts { get; set; }
     }
 }

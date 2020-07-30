@@ -70,6 +70,6 @@ function SearchCustomers() {
     window.location.href = updateQueryStringParameter(uri, 'searchCity', $('#SearchCity').val());
 }
 
-$(function() {
-    $("#pickDateCustomerBirthday").datepicker();
-});
+//$(function() {
+//    $("#pickDateCustomerBirthday").datepicker();
+//});
