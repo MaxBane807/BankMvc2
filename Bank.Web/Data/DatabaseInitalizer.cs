@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -59,6 +60,7 @@ namespace Bank.Web.Data
                     userManager.AddToRoleAsync(user,
                                         "Admin").Wait();
                 }
+                
             }
 
             if (userManager.FindByEmailAsync("stefan.holmberg@nackademin.se").Result == null)
