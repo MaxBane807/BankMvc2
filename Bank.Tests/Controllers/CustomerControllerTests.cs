@@ -6,7 +6,7 @@ using Bank.Web.Controllers;
 using Moq;
 using Bank.Web.Services.Interfaces;
 using AutoMapper;
-using Bank.Web.Models;
+using Bank.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using AutoFixture;
 using Bank.Web.ViewModels;

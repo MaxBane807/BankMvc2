@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace Bank.Web.Data
+namespace Bank.Data
 {
     public partial class BankUser : IdentityUser
     {      

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bank.Web.Data;
-using Bank.Web.Models;
+using Bank.Data;
+using Bank.Data.Models;
 using Bank.Web.Services.Classes;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;

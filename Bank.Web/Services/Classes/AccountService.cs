@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Bank.Web.Data;
-using Bank.Web.Models;
+using Bank.Data;
+using Bank.Data.Models;
 using Bank.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

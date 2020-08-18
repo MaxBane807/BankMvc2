@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using Bank.Web.Models;
+using Bank.Data.Models;
 using Bank.Web.Services.Interfaces;
 using Bank.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Bank.Web.ViewModels.ErrorViewModels;
 
 namespace Bank.Web.Controllers
 {

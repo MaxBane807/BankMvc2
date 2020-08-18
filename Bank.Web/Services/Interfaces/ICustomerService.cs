@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Bank.Web.Models;
+using Bank.Data.Models;
 using Bank.Web.ServiceModels.CustomerServiceModels;
 
 namespace Bank.Web.Services.Interfaces

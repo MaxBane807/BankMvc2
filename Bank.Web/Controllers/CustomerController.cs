@@ -6,7 +6,7 @@ using Bank.Web.Services.Interfaces;
 using Bank.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Bank.Web.Models;
+using Bank.Data.Models;
 
 namespace Bank.Web.Controllers
 {

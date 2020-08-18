@@ -1,4 +1,4 @@
-using Bank.Web.Data;
+using Bank.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +22,7 @@ namespace Bank.Web
             {
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<BankAppDataContext>();
-                var logger = services.GetRequiredService<ILogger<Program>>();
+                var logger = services.GetRequiredService<ILogger<DatabaseInitalizer>>();
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                 var userManager = services.GetRequiredService<UserManager<BankUser>>();
                 

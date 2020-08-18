@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Bank.Web.Data;
+using Bank.Data;
 using Bank.Web.ViewModels.UserViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

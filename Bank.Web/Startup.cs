@@ -1,6 +1,6 @@
 using System.Reflection;
 using AutoMapper;
-using Bank.Web.Data;
+using Bank.Data;
 using Bank.Web.Services.Classes;
 using Bank.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;

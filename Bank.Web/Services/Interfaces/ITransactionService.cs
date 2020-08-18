@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Bank.Web.Models;
+using Bank.Data.Models;
 
 namespace Bank.Web.Services.Interfaces
 {

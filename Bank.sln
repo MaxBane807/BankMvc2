@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Tests", "Bank.Tests\Ba
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Web", "Bank.Web\Bank.Web.csproj", "{52182A79-B666-4578-8DD4-B3CCE5995095}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Data", "Bank.Data\Bank.Data.csproj", "{0431B8EB-6BFE-45BA-9F0B-B7C658FE7287}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.SetUpSearch", "Bank.SetUpSearch\Bank.SetUpSearch.csproj", "{7C287E95-2F7D-484D-9492-B60B45229516}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{52182A79-B666-4578-8DD4-B3CCE5995095}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52182A79-B666-4578-8DD4-B3CCE5995095}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52182A79-B666-4578-8DD4-B3CCE5995095}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0431B8EB-6BFE-45BA-9F0B-B7C658FE7287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0431B8EB-6BFE-45BA-9F0B-B7C658FE7287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0431B8EB-6BFE-45BA-9F0B-B7C658FE7287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0431B8EB-6BFE-45BA-9F0B-B7C658FE7287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C287E95-2F7D-484D-9492-B60B45229516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C287E95-2F7D-484D-9492-B60B45229516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C287E95-2F7D-484D-9492-B60B45229516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C287E95-2F7D-484D-9492-B60B45229516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

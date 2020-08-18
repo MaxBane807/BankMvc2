@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using AutoMapper;
-using Bank.Web.Data;
+using Bank.Data;
 using Bank.Web.Extensions;
-using Bank.Web.Models;
+using Bank.Data.Models;
 using Bank.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Bank.Web.ServiceModels.CustomerServiceModels;

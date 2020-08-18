@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Bank.Web.Data
+namespace Bank.Data
 {
     public class DatabaseInitalizer
     {
         public void Initialize(
             BankAppDataContext context,
-            ILogger<Program> logger,
+            ILogger<DatabaseInitalizer> logger,
             RoleManager<IdentityRole> roleManager,
             UserManager<BankUser> userManager)
         {
@@ -19,7 +19,7 @@ namespace Bank.Web.Data
             SeedUsers(userManager);
             //Seed data?
         }
-        private void MigrateChanges(BankAppDataContext context, ILogger<Program> logger)
+        private void MigrateChanges(BankAppDataContext context, ILogger<DatabaseInitalizer> logger)
         {
             try
             {

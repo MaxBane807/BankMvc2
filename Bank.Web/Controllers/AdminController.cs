@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using Bank.Web.Models;
 using Bank.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Bank.Web.ViewModels.AdminViewModels;
 using Microsoft.AspNetCore.Identity;
-using Bank.Web.Data;
+using Bank.Data;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
