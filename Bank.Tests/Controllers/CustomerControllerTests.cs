@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoFixture;
 using Bank.Web.ViewModels;
 using System.Linq;
+using Bank.Search;
 
 namespace Bank.Tests.Controllers
 {
@@ -20,6 +21,7 @@ namespace Bank.Tests.Controllers
         private Mock<ICustomerService> customerService;
         private Mock<IAccountService> accountService;
         private Mock<IMapper> mapper;
+        private Mock<ISearchCustomers> search;
         private Fixture fixture;
         
         
@@ -29,8 +31,9 @@ namespace Bank.Tests.Controllers
             customerService = new Mock<ICustomerService>();
             mapper = new Mock<IMapper>();
             accountService = new Mock<IAccountService>();
+            search = new Mock<ISearchCustomers>(); 
             fixture = new Fixture();
-            sut = new CustomerController(customerService.Object, accountService.Object, mapper.Object);
+            sut = new CustomerController(customerService.Object, accountService.Object, mapper.Object, search.Object);
         }
 
         [Test]

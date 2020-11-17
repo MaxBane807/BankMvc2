@@ -23,11 +23,11 @@ namespace Bank.Web.Controllers
         
         // GET: api/accounts/5/
         
-        [HttpGet("accounts/{id}")]
-        public IActionResult Get(int id, [Required,FromQuery] int limit, [Required,FromQuery] int offset)
-        {
+        //[HttpGet("accounts/{id}")]
+        //public IActionResult Get(int id, [Required,FromQuery] int limit, [Required,FromQuery] int offset)
+        //{
             
-        }
+        //}
 
         // GET api/5/
         [HttpGet("{id}")]
@@ -37,10 +37,10 @@ namespace Bank.Web.Controllers
         }
 
         // POST api/
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
         // PUT api/5
         [HttpPut("{id}")]
