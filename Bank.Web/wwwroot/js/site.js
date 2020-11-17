@@ -70,6 +70,12 @@ function SearchCustomers() {
     window.location.href = updateQueryStringParameter(uri, 'searchCity', $('#SearchCity').val());
 }
 
+function SortCustomers(sortcolumn,ascending) {
+
+    var uri = updateQueryStringParameter(window.location.href, 'sortColumn', sortcolumn);
+    window.location.href = updateQueryStringParameter(uri, 'asc', ascending);
+}
+
 //$(function() {
 //    $("#pickDateCustomerBirthday").datepicker();
 //});

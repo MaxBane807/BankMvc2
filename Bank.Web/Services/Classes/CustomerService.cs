@@ -8,6 +8,8 @@ using Bank.Data.Models;
 using Bank.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Bank.Web.ServiceModels.CustomerServiceModels;
+using System.Collections.Generic;
+using Bank.Search;
 
 namespace Bank.Web.Services.Classes
 {
@@ -15,10 +17,12 @@ namespace Bank.Web.Services.Classes
     {
         private readonly BankAppDataContext _context;
         private readonly IMapper _mapper;
-        public CustomerService(BankAppDataContext context, IMapper mapper)
+        private readonly IManageSearchData _manageSearchDataTool;
+        public CustomerService(BankAppDataContext context, IMapper mapper, IManageSearchData manageSearch)
         {
             _context = context;
             _mapper = mapper;
+            _manageSearchDataTool = manageSearch;
         }
         
         public Customers getCustomerByUniqueID(string uniqueId)
@@ -38,21 +42,16 @@ namespace Bank.Web.Services.Classes
                 .FirstOrDefault(x => x.CustomerId == id)
                 .Dispositions.Sum(y => y.Account.Balance);
         }
-        public IQueryable<Customers> getListedCustomers(int pagesize, int currentPage, string searchName, string searchCity)
+        public List<Customers> getListedCustomers(List<int> customerIds)
         {
-            var query = _context.Customers.AsNoTracking();
+            var customers = new List<Customers>();
             
-            if (!string.IsNullOrEmpty(searchName))
+            foreach (var Id in customerIds)
             {
-                query = query.Where(x => x.Givenname.Contains(searchName) || x.Surname.Contains(searchName));
-            };
-
-            if (!string.IsNullOrEmpty(searchCity))
-            {
-                query = query.Where(x => x.City.Contains(searchCity));
-            };
-            
-            return query.Skip((currentPage - 1) * pagesize).Take(pagesize);
+                var customer = _context.Customers.FirstOrDefault(x => x.CustomerId == Id);                
+                customers.Add(customer);
+            }
+            return customers;
         }
         public int getNumberOfCustomers()
         {
@@ -94,6 +93,8 @@ namespace Bank.Web.Services.Classes
             _context.Dispositions.Add(newDisposition);
             _context.SaveChanges();
 
+            _manageSearchDataTool.CreateCustomerData(_mapper.Map<Customers, CustomerIndex>(newCustomer));
+
             return newCustomer.UniqueId;
         }
 
@@ -107,12 +108,16 @@ namespace Bank.Web.Services.Classes
                     throw new InvalidOperationException("The customer that the program tried to change diden't exist. A new customer was added");
                 }
                 _context.Entry(customer).State = EntityState.Modified;
-                _context.SaveChanges();                
+                _context.SaveChanges();
+
+                _manageSearchDataTool.UpdateCustomerData(_mapper.Map<Customers, CustomerIndex>(customer));
             }
             catch (InvalidOperationException e)
             {
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
+
+                _manageSearchDataTool.CreateCustomerData(_mapper.Map<Customers, CustomerIndex>(customer));
             }
         }
 

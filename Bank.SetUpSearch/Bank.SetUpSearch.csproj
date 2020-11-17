@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Search.Documents" Version="11.0.0" />
+    <PackageReference Include="Azure.Search.Documents" Version="11.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bank.Data\Bank.Data.csproj" />
+    <ProjectReference Include="..\Bank.Search\Bank.Search.csproj" />
   </ItemGroup>
 
 </Project>

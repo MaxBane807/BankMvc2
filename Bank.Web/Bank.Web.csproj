@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bank.Data\Bank.Data.csproj" />
+    <ProjectReference Include="..\Bank.Search\Bank.Search.csproj" />
   </ItemGroup>
 
 </Project>

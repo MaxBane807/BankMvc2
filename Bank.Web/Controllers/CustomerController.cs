@@ -7,6 +7,8 @@ using Bank.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Bank.Data.Models;
+using Bank.Search;
+using System.Collections.Generic;
 
 namespace Bank.Web.Controllers
 {
@@ -16,12 +18,14 @@ namespace Bank.Web.Controllers
         private readonly ICustomerService _customerService;
         private readonly IAccountService _accountService;
         private readonly IMapper _mapper;
+        private readonly ISearchCustomers _customerSearch;
         
-        public CustomerController(ICustomerService customerService, IAccountService accountService, IMapper mapper)
+        public CustomerController(ICustomerService customerService, IAccountService accountService, IMapper mapper, ISearchCustomers search)
         {
             _customerService = customerService;
             _accountService = accountService;
             _mapper = mapper;
+            _customerSearch = search;
         }            
 
         public IActionResult viewCustomer(string searchID)
@@ -60,31 +64,23 @@ namespace Bank.Web.Controllers
             }
         }
 
-        public IActionResult ListCustomers(string page,string searchName, string searchCity)
+        public IActionResult ListCustomers(string page,string searchName, string searchCity, string sortColumn, bool asc)
         {
                       
             var listCustomersViewModel = new ListCustomersViewModel();
 
-            listCustomersViewModel.PagingViewModel.CurrentPage = string.IsNullOrEmpty(page) ? 1 : Convert.ToInt32(page);
+            int currentPage = string.IsNullOrEmpty(page) ? 1 : Convert.ToInt32(page);
+            int pageSize = 50;
 
-            listCustomersViewModel.PagingViewModel.PageSize = 50;
+            listCustomersViewModel.PagingViewModel.CurrentPage = currentPage;
+            listCustomersViewModel.PagingViewModel.PageSize = pageSize;
 
-            listCustomersViewModel.Customers = _customerService.getListedCustomers(
-                listCustomersViewModel.PagingViewModel.PageSize,
-                listCustomersViewModel.PagingViewModel.CurrentPage,
-                searchName,
-                searchCity
-                ).Select(x => new ListCustomersViewModel.CustomerViewModel
-                {
-                    CustomerId = x.CustomerId,
-                    City = x.City,
-                    Givenname = x.Givenname,
-                    NationalId = x.NationalId,
-                    Streetaddress = x.Streetaddress,
-                    Surname = x.Surname
-                }).ToList();
+            var search = searchName + " " + searchCity;
+            var searchresult = _customerSearch.GetPagedCustomerIds(search, sortColumn, asc, pageSize, currentPage);
 
-            var pageCount = (double)_customerService.getNumberOfCustomersBySearch(searchName,searchCity) / listCustomersViewModel.PagingViewModel.PageSize;
+            listCustomersViewModel.Customers = _mapper.Map<List<Customers>,List<ListCustomersViewModel.CustomerViewModel>>(_customerService.getListedCustomers(searchresult.PagedResultIds));
+            
+            var pageCount = (double)searchresult.ResultCount / listCustomersViewModel.PagingViewModel.PageSize;
             listCustomersViewModel.PagingViewModel.MaxPages = (int)Math.Ceiling(pageCount);
 
             return View(listCustomersViewModel);

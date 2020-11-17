@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Bank.SetUpSearch
+namespace Bank.Search
 {
-    class CustomerIndex
+    public class CustomerIndex
     {
         [JsonPropertyName("customerId")]
         public string CustomerId { get; set; }

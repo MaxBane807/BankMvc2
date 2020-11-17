@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Bank.Data.Models;
 using Bank.Web.ServiceModels.CustomerServiceModels;
 
@@ -9,7 +10,7 @@ namespace Bank.Web.Services.Interfaces
         Customers getCustomerByUniqueID(string uniqueId);
         decimal getTotalAmountByID(int id);
 
-        IQueryable<Customers> getListedCustomers(int pagesize, int currentPage, string searchName, string searchCity);
+        List<Customers> getListedCustomers(List<int> customerIds);
         int getNumberOfCustomers();
         int getNumberOfCustomersBySearch(string searchName,string searchCity);
         string CreateCustomer(CreateCustomerServiceModel model);

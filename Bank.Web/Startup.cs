@@ -1,6 +1,7 @@
 using System.Reflection;
 using AutoMapper;
 using Bank.Data;
+using Bank.Search;
 using Bank.Web.Services.Classes;
 using Bank.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +43,9 @@ namespace Bank.Web
             services.AddTransient<IInsertService, InsertService>();
             services.AddTransient<IWithdrawService, WithdrawService>();
             services.AddTransient<ITransferService, TransferService>();
+
+            services.AddSingleton<ISearchCustomers, SearchCustomers>();
+            services.AddTransient<IManageSearchData, ManageSearchData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

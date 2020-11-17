@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Bank.Data.Models;
+using Bank.Search;
 using Bank.Web.ServiceModels.CustomerServiceModels;
 using Bank.Web.ViewModels;
 
@@ -23,6 +24,10 @@ namespace Bank.Web.MapperProfiles
 
             CreateMap<ChangeCustomerServiceModel, Customers>()
                 .ForMember(x => x.Dispositions, opt => opt.Ignore());
+
+            CreateMap<Customers, ListCustomersViewModel.CustomerViewModel>();
+            
+            CreateMap<Customers, CustomerIndex>();
         }
     }
 }
