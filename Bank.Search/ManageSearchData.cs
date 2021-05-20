@@ -13,11 +13,9 @@ namespace Bank.Search
     {
         SearchClient _qryClient;
         
-        public ManageSearchData()
-        {
-            string serviceName = Environment.GetEnvironmentVariable("SearchService");
-            string indexName = "customersearch";
-            string apiKey = Environment.GetEnvironmentVariable("SearchKey");
+        public ManageSearchData(string serviceName, string indexName,string apiKey)
+        {           
+            
             Uri serviceEndpoint = new Uri($"https://{serviceName}.search.windows.net/");
             AzureKeyCredential credential = new AzureKeyCredential(apiKey);
 

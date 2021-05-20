@@ -13,18 +13,20 @@ namespace Bank.Search
 {
     public class SearchCustomers : ISearchCustomers
     {
-        public CustomerResult GetPagedCustomerIds(string search, string sortField, bool asc, int pageSize, int currentPage)
-        {
-            string serviceName = Environment.GetEnvironmentVariable("SearchService");
-            string indexName = "customersearch";
-            string apiKey = Environment.GetEnvironmentVariable("SearchKey");
 
+        SearchClient _qryClient;
+        
+        public SearchCustomers(string serviceName, string indexName, string apiKey)
+        {           
             Uri serviceEndpoint = new Uri($"https://{serviceName}.search.windows.net/");
             AzureKeyCredential credential = new AzureKeyCredential(apiKey);
 
             // Create a SearchClient to load and query documents
-            SearchClient qryclient = new SearchClient(serviceEndpoint, indexName, credential);
-
+            _qryClient = new SearchClient(serviceEndpoint, indexName, credential);
+        }
+        public CustomerResult GetPagedCustomerIds(string search, string sortField, bool asc, int pageSize, int currentPage)
+        {
+            
             SearchOptions options;
             SearchResults<CustomerIndex> results;
 
@@ -54,7 +56,7 @@ namespace Bank.Search
 
             if (string.IsNullOrWhiteSpace(search))
             {
-                results = qryclient.Search<CustomerIndex>("*", options);
+                results = _qryClient.Search<CustomerIndex>("*", options);
             }
             else
             {
@@ -66,7 +68,7 @@ namespace Bank.Search
                 }
                 var searchString = builder.AppendJoin(' ', terms).ToString();
                 
-                results = qryclient.Search<CustomerIndex>(searchString, options);
+                results = _qryClient.Search<CustomerIndex>(searchString, options);
             }
 
             var resultContainer = new CustomerResult();

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 using Bank.Web.Services.Classes;
 using Bank.Web.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 

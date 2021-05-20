@@ -21,7 +21,7 @@ namespace Bank.Tests.Controllers
         private Mock<ICustomerService> customerService;
         private Mock<IAccountService> accountService;
         private Mock<IMapper> mapper;
-        private Mock<ISearchCustomers> search;
+        private Mock<ISearchService> search;
         private Fixture fixture;
         
         
@@ -31,7 +31,7 @@ namespace Bank.Tests.Controllers
             customerService = new Mock<ICustomerService>();
             mapper = new Mock<IMapper>();
             accountService = new Mock<IAccountService>();
-            search = new Mock<ISearchCustomers>(); 
+            search = new Mock<ISearchService>(); 
             fixture = new Fixture();
             sut = new CustomerController(customerService.Object, accountService.Object, mapper.Object, search.Object);
         }

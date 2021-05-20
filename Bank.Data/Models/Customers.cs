@@ -51,6 +51,12 @@ namespace Bank.Data.Models
         public string Telephonenumber { get; set; }
         [StringLength(100)]
         public string Emailaddress { get; set; }
+        
+        [StringLength(20)]
+        public string Username { get; set; }
+
+        [StringLength(20)]
+        public string Password { get; set; }
 
         [InverseProperty("Customer")]
         public virtual ICollection<Dispositions> Dispositions { get; set; }

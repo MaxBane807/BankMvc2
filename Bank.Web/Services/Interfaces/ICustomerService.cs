@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Bank.Data.Models;
 using Bank.Web.ServiceModels.CustomerServiceModels;
 
@@ -16,5 +17,7 @@ namespace Bank.Web.Services.Interfaces
         string CreateCustomer(CreateCustomerServiceModel model);
         void ChangeCustomer(ChangeCustomerServiceModel model);
         Customers GetCustomerByNationalId(string nationalId);
+
+        Task<Customers> Authenticate(string username, string password);
     }
 }

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Data", "Bank.Data\Bank
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.SetUpSearch", "Bank.SetUpSearch\Bank.SetUpSearch.csproj", "{7C287E95-2F7D-484D-9492-B60B45229516}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Search", "Bank.Search\Bank.Search.csproj", "{486A8E2D-939E-42FC-A298-4F368EF453CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Search", "Bank.Search\Bank.Search.csproj", "{486A8E2D-939E-42FC-A298-4F368EF453CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

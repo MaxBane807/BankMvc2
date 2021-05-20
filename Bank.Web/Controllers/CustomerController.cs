@@ -18,14 +18,14 @@ namespace Bank.Web.Controllers
         private readonly ICustomerService _customerService;
         private readonly IAccountService _accountService;
         private readonly IMapper _mapper;
-        private readonly ISearchCustomers _customerSearch;
+        private readonly ISearchService _searchService;
         
-        public CustomerController(ICustomerService customerService, IAccountService accountService, IMapper mapper, ISearchCustomers search)
+        public CustomerController(ICustomerService customerService, IAccountService accountService, IMapper mapper, ISearchService search)
         {
             _customerService = customerService;
             _accountService = accountService;
             _mapper = mapper;
-            _customerSearch = search;
+            _searchService = search;
         }            
 
         public IActionResult viewCustomer(string searchID)
@@ -76,7 +76,7 @@ namespace Bank.Web.Controllers
             listCustomersViewModel.PagingViewModel.PageSize = pageSize;
 
             var search = searchName + " " + searchCity;
-            var searchresult = _customerSearch.GetPagedCustomerIds(search, sortColumn, asc, pageSize, currentPage);
+            var searchresult = _searchService.GetPagedCustomerIds(search, sortColumn, asc, pageSize, currentPage);
 
             listCustomersViewModel.Customers = _mapper.Map<List<Customers>,List<ListCustomersViewModel.CustomerViewModel>>(_customerService.getListedCustomers(searchresult.PagedResultIds));
             

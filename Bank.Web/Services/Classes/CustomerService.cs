@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Bank.Web.ServiceModels.CustomerServiceModels;
 using System.Collections.Generic;
 using Bank.Search;
+using System.Threading.Tasks;
+using Bank.Web.WebApi.Helpers;
 
 namespace Bank.Web.Services.Classes
 {
@@ -17,12 +19,12 @@ namespace Bank.Web.Services.Classes
     {
         private readonly BankAppDataContext _context;
         private readonly IMapper _mapper;
-        private readonly IManageSearchData _manageSearchDataTool;
-        public CustomerService(BankAppDataContext context, IMapper mapper, IManageSearchData manageSearch)
+        private readonly ISearchService _searchService;
+        public CustomerService(BankAppDataContext context, IMapper mapper, ISearchService manageSearch)
         {
             _context = context;
             _mapper = mapper;
-            _manageSearchDataTool = manageSearch;
+            _searchService = manageSearch;
         }
         
         public Customers getCustomerByUniqueID(string uniqueId)
@@ -93,7 +95,7 @@ namespace Bank.Web.Services.Classes
             _context.Dispositions.Add(newDisposition);
             _context.SaveChanges();
 
-            _manageSearchDataTool.CreateCustomerData(_mapper.Map<Customers, CustomerIndex>(newCustomer));
+            _searchService.CreateCustomerData(_mapper.Map<Customers, CustomerIndex>(newCustomer));
 
             return newCustomer.UniqueId;
         }
@@ -110,20 +112,30 @@ namespace Bank.Web.Services.Classes
                 _context.Entry(customer).State = EntityState.Modified;
                 _context.SaveChanges();
 
-                _manageSearchDataTool.UpdateCustomerData(_mapper.Map<Customers, CustomerIndex>(customer));
+                _searchService.UpdateCustomerData(_mapper.Map<Customers, CustomerIndex>(customer));
             }
             catch (InvalidOperationException e)
             {
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
 
-                _manageSearchDataTool.CreateCustomerData(_mapper.Map<Customers, CustomerIndex>(customer));
+                _searchService.CreateCustomerData(_mapper.Map<Customers, CustomerIndex>(customer));
             }
         }
 
         public Customers GetCustomerByNationalId(string nationalId)
         {
             return _context.Customers.FirstOrDefault(x => x.NationalId == nationalId);
+        }
+
+        public async Task<Customers> Authenticate(string username, string password)
+        {
+            var customer = await Task.Run(() => _context.Customers.SingleOrDefault(x => x.Username == username && x.Password == password));
+
+            if (customer == null)
+                return null;
+
+            return customer.WithoutPassword();
         }
     }
 }

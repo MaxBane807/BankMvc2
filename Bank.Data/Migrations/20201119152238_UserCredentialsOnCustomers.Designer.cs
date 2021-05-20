@@ -4,14 +4,16 @@ using Bank.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bank.Data.Migrations
 {
     [DbContext(typeof(BankAppDataContext))]
-    partial class BankAppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20201119152238_UserCredentialsOnCustomers")]
+    partial class UserCredentialsOnCustomers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

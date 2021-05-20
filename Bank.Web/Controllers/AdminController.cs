@@ -179,7 +179,8 @@ namespace Bank.Web.Controllers
             var user = await _userManager.FindByIdAsync(id);
             var result = await _userManager.DeleteAsync(user);
             if (result.Succeeded)
-            {
+            {                
+                
                 return RedirectToAction("ManageUsers");
             }
             else

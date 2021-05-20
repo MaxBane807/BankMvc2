@@ -10,10 +10,6 @@ namespace Bank.Data
 {
     class BankAppDbContextFactory : IDesignTimeDbContextFactory<BankAppDataContext>
     {
-        BankAppDbContextFactory()
-        {
-
-        }
 
         private IConfiguration Configuration => new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
