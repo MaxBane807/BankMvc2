@@ -42,6 +42,7 @@ namespace Bank.Tests.Controllers
             customerService.Setup(x => x.getCustomerByUniqueID(It.IsAny<string>())).Returns(new Customers());
 
             var result = sut.viewCustomer("CustomerName") as ViewResult;
+            
             Assert.IsNull(result.ViewName);
         }
         [Test]

@@ -64,7 +64,7 @@ namespace Bank.Web.Controllers
             }
         }
 
-        public IActionResult ListCustomers(string page,string searchName, string searchCity, string sortColumn, bool asc)
+        public IActionResult ListCustomers(string page, string searchName, string searchCity, string sortColumn, bool asc)
         {
                       
             var listCustomersViewModel = new ListCustomersViewModel();

@@ -19,12 +19,12 @@
 <div class="table-responsive">
     <table class="table">
         <thead>
-            <tr>
-                <th scope="col">Customer ID  <div onclick="SortCustomers('customerId', true)" class="fas fa-sort-up position-absolute"></div> <div onclick="SortCustomers('customerId', false)" class="fas fa-sort-down"></div></th>
-                <th scope="col">National ID <div onclick="SortCustomers('nationalId', true)" class="fas fa-sort-up position-absolute"></div> <div onclick="SortCustomers('nationalId', false)" class="fas fa-sort-down"></div></th>
-                <th scope="col">Name <div onclick="SortCustomers('surname', true)" class="fas fa-sort-up position-absolute"></div> <div onclick="SortCustomers('surname', false)" class="fas fa-sort-down"></div> </th>
-                <th scope="col">Address <div onclick="SortCustomers('streetAddress', true)" class="fas fa-sort-up position-absolute"></div> <div onclick="SortCustomers('streetAddress', false)" class="fas fa-sort-down"></div></th>
-                <th scope="col">City <div onclick="SortCustomers('city', true)" class="fas fa-sort-up position-absolute"></div> <div onclick="SortCustomers('city', false)" class="fas fa-sort-down"></div></th>
+            <tr>                
+                <th scope="col" onclick="SortCustomers('customerId', @((!(Context.Request.Query.ContainsKey("asc") && Context.Request.Query["asc"].ToString() == "true")).ToString().ToLower()))">Customer ID</th>
+                <th scope="col" onclick="SortCustomers('nationalId', @((!(Context.Request.Query.ContainsKey("asc") && Context.Request.Query["asc"].ToString() == "true")).ToString().ToLower()))">National ID </th>
+                <th scope="col" onclick="SortCustomers('surname', @((!(Context.Request.Query.ContainsKey("asc") && Context.Request.Query["asc"].ToString() == "true")).ToString().ToLower()))">Name</th>
+                <th scope="col" onclick="SortCustomers('streetAddress', @((!(Context.Request.Query.ContainsKey("asc") && Context.Request.Query["asc"].ToString() == "true")).ToString().ToLower()))">Street Address</th>
+                <th scope="col" onclick="SortCustomers('city', @((!(Context.Request.Query.ContainsKey("asc") && Context.Request.Query["asc"].ToString() == "true")).ToString().ToLower()))">City</th>
             </tr>
         </thead>
         <tbody>
