@@ -23,10 +23,10 @@ else
     </div>
     <input hidden asp-for="@Model.CustomerId" value="@Model.CustomerId" />
     <input hidden asp-for="@Model.UniqueId" value="@Model.UniqueId" />
-    <div class="form-group row bg-info text-white">
+    <div class="form-group row bg-dark text-white">
         <label class="col-form-label col-lg-2">Total Balance</label>
         <div class="col-lg-10">
-            <input readonly asp-for="@Model.TotalAmount" value="@Model.TotalAmount.ToString(System.Globalization.CultureInfo.InvariantCulture)" class="form-control bg-info text-white border-info" type="number" step="any"/>
+            <input readonly asp-for="@Model.TotalAmount" value="@Model.TotalAmount.ToString(System.Globalization.CultureInfo.InvariantCulture)" class="form-control bg-dark text-white border-dark" type="number" step="any"/>
         </div>
     </div>
     <div class="form-group row">
@@ -40,10 +40,10 @@ else
             <span class="text-danger" asp-validation-for="@Model.Surname"></span>
         </div>
     </div>
-    <div class="form-group row bg-info text-white">
+    <div class="form-group row bg-dark text-white">
         <label class="col-form-label col-lg-2">Gender</label>
         <div class="col-lg-10">
-            <select class="form-control bg-info text-white border-info" asp-for="@Model.Gender">
+            <select class="form-control bg-dark text-white border-dark" asp-for="@Model.Gender">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
@@ -57,18 +57,18 @@ else
             <span class="text-danger" asp-validation-for="@Model.Birthday"></span>
         </div>
     </div>
-    <div class="form-group row bg-info text-white">
+    <div class="form-group row bg-dark text-white">
         <label class="col-form-label col-lg-2">Address</label>
         <div class="col-lg-4">
-            <input asp-for="@Model.Streetaddress" value="@Model.Streetaddress" placeholder="Street Address" class="form-control bg-info text-white border-info" />
+            <input asp-for="@Model.Streetaddress" value="@Model.Streetaddress" placeholder="Street Address" class="form-control bg-dark text-white border-dark" />
             <span class="text-danger" asp-validation-for="@Model.Streetaddress"></span>
         </div>
         <div class="col-lg-3">
-            <input asp-for="@Model.City" value="@Model.City" placeholder="City" class="form-control bg-info text-white border-info" />
+            <input asp-for="@Model.City" value="@Model.City" placeholder="City" class="form-control bg-dark text-white border-dark" />
             <span class="text-danger" asp-validation-for="@Model.City"></span>
         </div>
         <div class="col-lg-3">
-            <input asp-for="@Model.Country" value="@Model.Country" placeholder="Country" class="form-control bg-info text-white border-info" />
+            <input asp-for="@Model.Country" value="@Model.Country" placeholder="Country" class="form-control bg-dark text-white border-dark" />
             <span class="text-danger" asp-validation-for="@Model.Country"></span>
         </div>
     </div>
@@ -79,10 +79,10 @@ else
             <span class="text-danger" asp-validation-for="@Model.CountryCode"></span>
         </div>
     </div>
-    <div class="form-group row bg-info text-white">
+    <div class="form-group row bg-dark text-white">
         <label class="col-form-label col-lg-2">National ID</label>
         <div class="col-lg-10">
-            <input asp-for="@Model.NationalId" value="@Model.NationalId" class="form-control bg-info text-white border-info" />
+            <input asp-for="@Model.NationalId" value="@Model.NationalId" class="form-control bg-dark text-white border-dark" />
             <span class="text-danger" asp-validation-for="@Model.NationalId"></span>
         </div>
     </div>
@@ -93,10 +93,10 @@ else
             <span class="text-danger" asp-validation-for="@Model.Emailaddress"></span>
         </div>
     </div>
-    <div class="form-group row bg-info text-white">
+    <div class="form-group row bg-dark text-white">
         <label class="col-form-label col-lg-2">Telephone Country Code</label>
         <div class="col-lg-10">
-            <input asp-for="@Model.Telephonecountrycode" value="@Model.Telephonecountrycode" class="form-control bg-info text-white border-info" />
+            <input asp-for="@Model.Telephonecountrycode" value="@Model.Telephonecountrycode" class="form-control bg-dark text-white border-dark" />
             <span class="text-danger" asp-validation-for="@Model.Telephonecountrycode"></span>
         </div>
     </div>
@@ -107,10 +107,10 @@ else
             <span class="text-danger" asp-validation-for="@Model.Telephonenumber"></span>
         </div>
     </div>
-    <div class="form-group row bg-info text-white">
+    <div class="form-group row bg-dark text-white">
         <label class="col-form-label col-lg-2">Country Code</label>
         <div class="col-lg-10">
-            <input asp-for="@Model.CountryCode" value="@Model.CountryCode" class="form-control bg-info text-white border-info" />
+            <input asp-for="@Model.CountryCode" value="@Model.CountryCode" class="form-control bg-dark text-white border-dark" />
             <span class="text-danger" asp-validation-for="@Model.CountryCode"></span>
         </div>
     </div>
@@ -143,7 +143,7 @@ else
             {
                 if (blueRow)
                 {
-                    <tr class="bg-info">
+                    <tr class="bg-dark">
                         <th class="text-white" scope="row">Account Nr: @accountnr</th>
                         <td><a class="text-white" asp-controller="Account" asp-action="ViewAccount" asp-route-id="@accountnr">View</a></td>
                         <td><a class="text-white" asp-controller="Transaction" asp-action="Insert" asp-route-accountid="@accountnr">Insert</a></td>

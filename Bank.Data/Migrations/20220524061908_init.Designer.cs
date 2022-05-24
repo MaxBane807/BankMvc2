@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bank.Data.Migrations
 {
     [DbContext(typeof(BankAppDataContext))]
-    [Migration("20200804140640_First")]
-    partial class First
+    [Migration("20220524061908_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -209,6 +209,10 @@ namespace Bank.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
                     b.Property<string>("Streetaddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -229,6 +233,10 @@ namespace Bank.Data.Migrations
 
                     b.Property<string>("UniqueId")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Zipcode")
                         .IsRequired()
