@@ -2,7 +2,6 @@
     
 <h1 class="text-center">Manage Users</h1>
 
-<br />
 
 <div class="table-responsive">
     <table class="table">
@@ -22,10 +21,13 @@
                 <tr>
                     <th scope="row">@user.Email</th>
                     <td>@user.FirstName @user.LastName</td>
-                    <td>@(user.Admin ? "Admin" : "Cashier")</td>
-                    <td><a asp-controller="Admin" asp-action="ChangeRole" asp-route-id="@user.ID" asp-route-admin="@user.Admin">Change Role</a></td>                    
-                    <td><a asp-controller="Admin" asp-action="ChangeUser" asp-route-id="@user.ID">Edit details</a></td>
-                    <td><a asp-controller="Admin" asp-action="DeleteUser" asp-route-id="@user.ID">Delete</a></td>
+                    <td>@(user.Admin ? "Admin" : "Cashier")</td> 
+                    @if (!(user.Email == "stefan.holmberg@systementor.se"))
+                    {
+                        <td><a asp-controller="Admin" asp-action="ChangeRole" asp-route-id="@user.ID" asp-route-admin="@user.Admin">Change Role</a></td>                    
+                        <td><a asp-controller="Admin" asp-action="ChangeUser" asp-route-id="@user.ID">Edit details</a></td>
+                        <td><a asp-controller="Admin" asp-action="DeleteUser" asp-route-id="@user.ID">Delete</a></td>
+                    }                  
                 </tr>
             }
         </tbody>

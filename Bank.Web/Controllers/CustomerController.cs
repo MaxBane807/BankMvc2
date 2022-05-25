@@ -55,6 +55,7 @@ namespace Bank.Web.Controllers
 
                 viewmodel.TotalAmount = _customerService.getTotalAmountByID(customer.CustomerId);
                 viewmodel.Accounts = _accountService.getAccountsByCustomerID(customer.CustomerId);
+               
 
                 return View(viewmodel);
             }

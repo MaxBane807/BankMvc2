@@ -53,7 +53,7 @@ else
     <div class="form-group row">
         <label class="col-form-label col-lg-2">Day of Birth</label>
         <div class="col-lg-10">
-            <input asp-for="@Model.Birthday" value="@(Model.Birthday.HasValue ? Model.Birthday.Value.Date.ToShortDateString() : null)" class="form-control border-white" type="date" />
+            <input asp-for="@Model.Birthday" value="@(Model.Birthday.HasValue ? Model.Birthday.Value.Date.ToString("yyyy-MM-dd"): null)" class="form-control border-white" type="date" />
             <span class="text-danger" asp-validation-for="@Model.Birthday"></span>
         </div>
     </div>

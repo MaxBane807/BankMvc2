@@ -68,18 +68,12 @@ namespace Bank.Web.Controllers
         {
             var model = new ManageUsersViewModel();
             
-            foreach(var user in _userManager.Users)
+            var users = _userManager.Users.ToList();
+            foreach(var user in users)
             {
                 var modeluser = new ManageUsersViewModel.UserViewModel();
-                var role = await _userManager.GetRolesAsync(user);
-                if (role.Any(x => x == "Admin"))
-                {
-                    modeluser.Admin = true;
-                }
-                else
-                {
-                    modeluser.Admin = false;
-                }
+                var isAdmin = await _userManager.IsInRoleAsync(user,"Admin");
+                modeluser.Admin = isAdmin;
                 modeluser.ID = user.Id;
                 modeluser.Email = user.Email;
                 modeluser.FirstName = user.FirstName;
